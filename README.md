@@ -1,27 +1,58 @@
-# MariosyFrontend
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Mario_emblem.svg/2048px-Mario_emblem.svg.png">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Mario_emblem.svg/2048px-Mario_emblem.svg.png" alt="Logo" style="width: 150px;">
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.5.
+  </a>`
 
-## Development server
+  <h3 align="center">Mariosy Frontend</h3>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+  <p align="center">
+    A project made for interact with teammates using Kudos.
+    <br>
+    <br>
+    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/ADS-Studio-Deloitte/wspoldzielona-kreatywnosc">View Demo</a>
+    ·
+    <a href="https://github.com/ADS-Studio-Deloitte/wspoldzielona-kreatywnosc/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/ADS-Studio-Deloitte/wspoldzielona-kreatywnosc/issues">Request Feature</a>
+  </p>
+</div>
 
-## Code scaffolding
+<br>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+<!-- ABOUT THE PROJECT -->
 
-## Build
+## 🔨 Running guide
+Before you run project install node version `v18.17.0
+`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+###  🟢 Running application
+```bash
+ng server
+```
 
-## Running unit tests
+###  🗄️ Running json server
+```bash
+json-server db.json --routes routes.json
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+---
 
-## Running end-to-end tests
+## ⚙️ Built With
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+ List of major frameworks/libraries used to bootstrap the project.
 
-## Further help
+* [![Java][Java.io]][Java-url]
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+[Java.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
+[Java-url]: https://java.io/
