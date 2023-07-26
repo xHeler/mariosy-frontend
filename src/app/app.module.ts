@@ -7,8 +7,8 @@ import { AppComponent } from './app.component';
 
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { RetryInterceptor } from './core/interceptors/retry.interceptor';
-import { LoaderComponent } from './shared/loader/loader.component';
-import { HeaderComponent } from './shared/header/header.component';
+import { LoaderComponent } from './shared/components/loader/loader.component';
+import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
 

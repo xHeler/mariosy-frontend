@@ -1,5 +1,5 @@
 import { Subject } from 'rxjs';
-import { LoaderService } from './../../core/services/loader.service';
+import { LoaderService } from './../../../core/services/loader.service';
 import { Component } from '@angular/core';
 
 @Component({
