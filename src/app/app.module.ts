@@ -8,9 +8,11 @@ import { AppComponent } from './app.component';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { RetryInterceptor } from './core/interceptors/retry.interceptor';
 import { LoaderComponent } from './shared/loader/loader.component';
+import { HeaderComponent } from './shared/header/header.component';
+import { FooterComponent } from './shared/footer/footer.component';
 
 @NgModule({
-  declarations: [AppComponent, LoaderComponent],
+  declarations: [AppComponent, LoaderComponent, HeaderComponent, FooterComponent],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [
     {
