@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -13,8 +15,14 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
 
 @NgModule({
-  declarations: [AppComponent, LoaderComponent, HeaderComponent, FooterComponent, PageNotFoundComponent],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule],
+  declarations: [
+    AppComponent,
+    LoaderComponent,
+    HeaderComponent,
+    FooterComponent,
+    PageNotFoundComponent,
+  ],
+  imports: [BrowserModule, NgbModule, HttpClientModule, AppRoutingModule],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

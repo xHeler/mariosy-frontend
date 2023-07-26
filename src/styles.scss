@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+// Variables
+$color-primary: #e74850;
+$color-secondary: #4286f4;
+$color-secondary-ligth: #4286f4;
+$color-accent: #fccf00;
+$color-text-dark: #000000;
+$color-text-light: #ffffff;
+
+// Global styles
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  background: linear-gradient(
+    178.38deg,
+    #e74850 13.52%,
+    #236fe9 34.61%,
+    #4286f4 69.76%
+  );
+  margin: 0;
+  font-size: 14px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  color: #000;
+}
