@@ -7,9 +7,10 @@ import { AppComponent } from './app.component';
 
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { RetryInterceptor } from './core/interceptors/retry.interceptor';
+import { LoaderComponent } from './shared/loader/loader.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LoaderComponent],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [
     {
