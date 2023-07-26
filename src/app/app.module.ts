@@ -9,10 +9,11 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { RetryInterceptor } from './core/interceptors/retry.interceptor';
 import { LoaderComponent } from './shared/loader/loader.component';
 import { HeaderComponent } from './shared/header/header.component';
-import { FooterComponent } from './shared/footer/footer.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
+import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
 
 @NgModule({
-  declarations: [AppComponent, LoaderComponent, HeaderComponent, FooterComponent],
+  declarations: [AppComponent, LoaderComponent, HeaderComponent, FooterComponent, PageNotFoundComponent],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [
     {
