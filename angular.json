@@ -68,7 +68,8 @@
               "browserTarget": "mariosy-frontend:build:production"
             },
             "development": {
-              "browserTarget": "mariosy-frontend:build:development"
+              "browserTarget": "mariosy-frontend:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
