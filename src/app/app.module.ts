@@ -6,11 +6,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
+import { RetryInterceptor } from './core/interceptors/retry.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RetryInterceptor,
+      multi: true,
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
