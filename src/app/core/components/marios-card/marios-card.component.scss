@@ -1,0 +1,52 @@
+@import "../../../shared/variables/global.scss";
+
+$color-gray-light: #a1a1a1;
+
+@mixin font-style($weight, $size, $spacing) {
+  font-family: $font-family;
+  font-weight: $weight;
+  font-size: $size;
+  letter-spacing: $spacing;
+}
+
+@mixin flex-left() {
+  display: flex;
+  justify-content: left;
+  align-items: left;
+}
+
+.marios-container {
+  @include flex-left();
+  flex-direction: column;
+  width: 320px;
+  height: 160px;
+  background-color: $color-text-light;
+  padding-left: 6px;
+  border-radius: 5px;
+}
+
+.marios-card {
+  @include flex-left();
+  margin-top: 8px;
+
+  > img {
+    margin-right: 8px;
+  }
+
+  > p {
+    @include font-style($font-weight-bold, 16px, 0px);
+    margin: 0;
+  }
+}
+
+.marios-card-author {
+  color: $color-primary;
+}
+
+.marios-card-comment {
+  color: $color-gray-light;
+}
+
+.marios-card-see-more {
+  color: $color-text-dark;
+}
