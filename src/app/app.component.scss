@@ -1,0 +1,10 @@
+@import '../app/shared/variables/global.scss';
+
+hr {
+    border: none;
+    height: 0.25rem;
+    color: $color-text-light;
+    background-color: $color-text-light;
+    margin:0 auto;
+    opacity: 100%;
+}
