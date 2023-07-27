@@ -54,8 +54,8 @@ export class MariosService {
       .put<Marios>(`${this.baseUrl}/${marios.id}`, marios)
       .pipe(takeUntil(this.destroy$))
       .subscribe((data) => {
-        this.mariosData = this.mariosData.map((m) =>
-          m.id === data.id ? data : m
+        this.mariosData = this.mariosData.map((marios) =>
+          marios.id === data.id ? data : marios
         );
         this.mariosList$.next(this.mariosData);
       });
@@ -66,7 +66,7 @@ export class MariosService {
       .delete(`${this.baseUrl}/${mariosId}`)
       .pipe(takeUntil(this.destroy$))
       .subscribe(() => {
-        this.mariosData = this.mariosData.filter((m) => m.id !== mariosId);
+        this.mariosData = this.mariosData.filter((marios) => marios.id !== mariosId);
         this.mariosList$.next(this.mariosData);
       });
   }
