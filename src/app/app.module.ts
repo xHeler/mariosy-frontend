@@ -19,6 +19,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { AddMariosComponent } from './pages/add-marios/add-marios.component';
 import { SentMariosComponent } from './pages/sent-marios/sent-marios.component';
 import { ReceivedMariosComponent } from './pages/received-marios/received-marios.component';
+import { InfoCardComponent } from './core/components/info-card/info-card.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ReceivedMariosComponent } from './pages/received-marios/received-marios
     AddMariosComponent,
     SentMariosComponent,
     ReceivedMariosComponent,
+    InfoCardComponent,
   ],
   imports: [BrowserModule, NgbModule, HttpClientModule, AppRoutingModule],
   providers: [
