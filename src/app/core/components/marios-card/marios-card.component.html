@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="marios-container">
+  <div class="marios-container" (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()">
     <div class="col-md-12">
       <div class="marios-card">
         <img src="assets/images/person.svg" alt="" />
@@ -30,5 +30,10 @@
         </p>
       </div>
     </div>
+
+    <div class="click-label-layer" *ngIf="isHovered">
+      <div class="click-label">READ MORE</div>
+    </div>
+
   </div>
 </div>

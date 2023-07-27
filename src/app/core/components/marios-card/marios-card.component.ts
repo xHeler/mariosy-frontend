@@ -11,6 +11,7 @@ import { MariosReaction } from '../../enums/marios-reaction.enum';
 export class MariosCardComponent {
   @Input() public marios!: Marios;
   @Input() public employee!: Employee;
+  public isHovered = false;
 
   getReactionMessage(): string {
     switch (this.marios.reaction) {
@@ -29,5 +30,13 @@ export class MariosCardComponent {
       default:
         return 'Great job!';
     }
+  }
+
+  onMouseEnter(): void {
+    this.isHovered = true;
+  }
+
+  onMouseLeave(): void {
+    this.isHovered = false;
   }
 }
