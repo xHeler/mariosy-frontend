@@ -1,5 +1,10 @@
 @import './app/shared/variables/global.scss';
 
+@font-face {
+  font-family: Open Sans;
+  src: url(assets/fonts/OpenSans.ttf) format("truetype");
+}
+
 html {
   margin: 0;
   padding: 0;

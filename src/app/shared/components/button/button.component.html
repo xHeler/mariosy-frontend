@@ -1,0 +1,22 @@
+<button
+  (click)="onClick()"
+  [disabled]="isDisabled"
+  [class]="btnClass"
+  [ngStyle]="{ 'border-color': borderColor }"
+>
+  <ng-container *ngIf="svgPlacement === 'start'">
+    <img
+      src="assets/images/arrow-left.svg"
+      alt="SVG Icon- Arrow Left"
+      style="margin: {{ getSvgPlacementMargin() }};"
+    />
+  </ng-container>
+  {{ buttonLabel | uppercase }}
+  <ng-container *ngIf="svgPlacement === 'end'">
+    <img
+      src="assets/images/arrow-right.svg"
+      alt="SVG Icon- Arrow Right"
+      style="margin: {{ getSvgPlacementMargin() }};"
+    />
+  </ng-container>
+</button>

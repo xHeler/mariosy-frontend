@@ -14,6 +14,11 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
 import { LoaderInterceptor } from './core/interceptors/loader.interceptor';
+import { ButtonComponent } from './shared/components/button/button.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
+import { AddMariosComponent } from './pages/add-marios/add-marios.component';
+import { SentMariosComponent } from './pages/sent-marios/sent-marios.component';
+import { ReceivedMariosComponent } from './pages/received-marios/received-marios.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +27,11 @@ import { LoaderInterceptor } from './core/interceptors/loader.interceptor';
     HeaderComponent,
     FooterComponent,
     PageNotFoundComponent,
+    ButtonComponent,
+    HomePageComponent,
+    AddMariosComponent,
+    SentMariosComponent,
+    ReceivedMariosComponent,
   ],
   imports: [BrowserModule, NgbModule, HttpClientModule, AppRoutingModule],
   providers: [
