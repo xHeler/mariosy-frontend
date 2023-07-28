@@ -1,39 +1,40 @@
-<div class="container">
-  <div class="marios-container" (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()">
-    <div class="col-md-12">
-      <div class="marios-card">
-        <img src="assets/images/person.svg" alt="" />
-        <p class="marios-card-author">
-          From: {{ employee.firstName }} {{ employee.lastName }}
-        </p>
-      </div>
+<div
+  class="marios-container"
+  (mouseenter)="onMouseEnter()"
+  (mouseleave)="onMouseLeave()"
+>
+  <div class="col-md-12">
+    <div class="marios-card">
+      <img src="assets/images/person.svg" alt="" />
+      <p class="marios-card-author">
+        From: {{ employee.firstName }} {{ employee.lastName }}
+      </p>
     </div>
+  </div>
 
-    <div class="col-md-12">
-      <div class="marios-card">
-        <img src="assets/images/star.svg" alt="" />
-        <p>{{ getReactionMessage() }}</p>
-      </div>
+  <div class="col-md-12">
+    <div class="marios-card">
+      <img src="assets/images/star.svg" alt="" />
+      <p>{{ getReactionMessage() }}</p>
     </div>
+  </div>
 
-    <div class="col-md-12">
-      <div class="marios-card">
-        <p class="marios-card-text">T: {{ marios.title }}</p>
-      </div>
+  <div class="col-md-12">
+    <div class="marios-card">
+      <p class="marios-card-text">T: {{ marios.title }}</p>
     </div>
+  </div>
 
-    <div class="col-md-12">
-      <div class="marios-card">
-        <p class="marios-card-comment">
-          {{ marios.message | truncate : 60 }}
-          <span class="marios-card-see-more">See more</span>
-        </p>
-      </div>
+  <div class="col-md-12">
+    <div class="marios-card">
+      <p class="marios-card-comment">
+        {{ marios.message | truncate : 60 }}
+        <span class="marios-card-see-more">See more</span>
+      </p>
     </div>
+  </div>
 
-    <div class="click-label-layer" *ngIf="isHovered">
-      <div class="click-label">READ MORE</div>
-    </div>
-
+  <div class="click-label-layer" *ngIf="isHovered">
+    <div class="click-label">READ MORE</div>
   </div>
 </div>

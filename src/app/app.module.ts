@@ -21,6 +21,7 @@ import { SentMariosComponent } from './pages/sent-marios/sent-marios.component';
 import { ReceivedMariosComponent } from './pages/received-marios/received-marios.component';
 import { InfoCardComponent } from './core/components/info-card/info-card.component';
 import { MariosCardComponent } from './core/components/marios-card/marios-card.component';
+import { MariosListComponent } from './core/components/marios-list/marios-list.component';
 import { TruncatePipe } from './shared/pipes/truncate.pipe';
 
 @NgModule({
@@ -37,6 +38,7 @@ import { TruncatePipe } from './shared/pipes/truncate.pipe';
     ReceivedMariosComponent,
     InfoCardComponent,
     MariosCardComponent,
+    MariosListComponent,
     TruncatePipe,
   ],
   imports: [BrowserModule, NgbModule, HttpClientModule, AppRoutingModule],
