@@ -57,6 +57,7 @@ $color-gray-light: #a1a1a1;
 }
 
 .marios-container {
+  cursor: pointer;
   &:hover {
     &::before {
       content: '';

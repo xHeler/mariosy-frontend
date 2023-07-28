@@ -1,4 +1,4 @@
-@import './app/shared/variables/global.scss';
+@import "./app/shared/variables/global.scss";
 
 @font-face {
   font-family: Open Sans;
@@ -9,18 +9,23 @@ html {
   margin: 0;
   padding: 0;
   height: 100%;
+  background-color: $color-primary;
 }
 
 body {
   background: linear-gradient(
     178.38deg,
-    #e74850 13.52%,
-    #236fe9 34.61%,
-    #4286f4 69.76%
+    $color-primary 13.52%,
+    $color-secondary-ligth 34.61%,
+    $color-secondary 69.76%
   );
   margin: 0;
   font-size: 14px;
-  font-family: "Open Sans", sans-serif;
+  font-family: $font-family;
   font-weight: 300;
-  color: #000;
+  color: $color-text-dark;
+}
+
+.no-padding {
+  padding: 0;
 }

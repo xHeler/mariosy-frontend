@@ -1,8 +1,8 @@
 @import "../../../shared/variables/global.scss";
 
 // Variables
-$card-width: 500px;
-$card-height: 250px;
+$card-width: 28rem;
+$card-height: 15rem;
 $mario-logo-width: 200px;
 $mario-logo-height: 200px;
 $box-shadow: 6px 8px 10px
@@ -31,7 +31,6 @@ $letter-spacing-huge: 20px;
 
 // Styles
 .card {
-  width: $card-width;
   height: $card-height;
   border-radius: 5px;
   background-color: $color-text-light;
@@ -72,7 +71,7 @@ $letter-spacing-huge: 20px;
       left: 0;
       position: absolute;
       text-align: center;
-      top: calc(#{$mario-logo-height} / 8);
+      top: calc(#{6rem} / 7);
       width: 100%;
 
       @include font-style(
