@@ -1,8 +1,12 @@
 @import "../../variables/global.scss";
 
-div {
+.navbar {
     background-color: $color-primary;
     padding-top: 1rem;
+
+    img {
+        cursor: pointer;
+    }
 }
 
 img {
