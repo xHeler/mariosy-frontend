@@ -6,9 +6,15 @@ import { MariosReaction } from '../../enums/marios-reaction.enum';
 @Component({
   selector: 'app-marios-list',
   templateUrl: './marios-list.component.html',
-  styleUrls: ['./marios-list.component.scss']
+  styleUrls: ['./marios-list.component.scss'],
 })
 export class MariosListComponent {
+  mariosList: Marios[] = [];
+
+  constructor() {
+    this.generateMariosList();
+  }
+
   exampleMarios: Marios = {
     senderId: 'sender123',
     receiversId: ['receiver456', 'receiver789'],
@@ -22,4 +28,12 @@ export class MariosListComponent {
     lastName: 'Doe',
     email: 'john.doe@example.com',
   };
+
+  generateMariosList() {
+    for (let i = 0; i < 20; i++) {
+      const newMario: Marios = { ...this.exampleMarios };
+
+      this.mariosList.push(newMario);
+    }
+  }
 }
