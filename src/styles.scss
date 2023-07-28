@@ -25,6 +25,8 @@ body {
   font-family: $font-family;
   font-weight: 300;
   color: $color-text-dark;
+  overflow: -moz-scrollbars-vertical; 
+  overflow-y: scroll;
 }
 
 a {
