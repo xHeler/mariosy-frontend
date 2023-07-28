@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Marios } from './../../models/marios.model';
 import { Employee } from './../../models/employee.model';
 import { MariosReaction } from '../../enums/marios-reaction.enum';
@@ -9,6 +9,8 @@ import { MariosReaction } from '../../enums/marios-reaction.enum';
   styleUrls: ['./marios-list.component.scss'],
 })
 export class MariosListComponent {
+  @Input() public label = '';
+
   mariosList: Marios[] = [];
 
   constructor() {
