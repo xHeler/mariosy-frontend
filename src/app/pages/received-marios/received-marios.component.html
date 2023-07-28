@@ -1,4 +1,6 @@
 <div class="d-flex justify-content-start mb-5 mt-3">
-  <app-button [buttonLabel]="'BACK'" [svgPlacement]="'start'"></app-button>
+  <a routerLink="/home">
+    <app-button [buttonLabel]="'BACK'" [svgPlacement]="'start'"></app-button>
+  </a>
 </div>
 <app-marios-list [label]="'RECEIVED MARIOS:'"></app-marios-list>
