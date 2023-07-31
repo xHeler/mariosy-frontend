@@ -64,6 +64,7 @@ export class MariosService {
       .subscribe((data) => {
         this.lastMariosData = [...data];
         this.lastMariosList$.next(this.lastMariosData);
+        console.log(data);
       });
   }
 
