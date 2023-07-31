@@ -3,34 +3,46 @@ import { Injectable } from '@angular/core';
 import { Observable, ReplaySubject, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Marios } from '../models/marios.model';
-import { MariosList } from '../models/marios-list.model';
+import { MariosElement } from '../models/marios-element.model';
+import { SessionService } from './session.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MariosService {
   private baseUrl = '/api/marios';
-  private mariosData: Marios[] = [];
-  private mariosList$ = new ReplaySubject<Marios[]>(1);
+  private mariosData: MariosElement[] = [];
+  private lastMariosList$ = new ReplaySubject<MariosElement[]>(1);
+  private sentMariosList$ = new ReplaySubject<MariosElement[]>(1);
+  private receivedMariosList$ = new ReplaySubject<MariosElement[]>(1);
   private destroy$ = new Subject<void>();
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private sessionService: SessionService
+  ) {}
 
-  get mariosList(): Observable<Marios[]> {
+  get lastMariosList(): Observable<MariosElement[]> {
     if (this.mariosData.length === 0) {
       this.fetchMariosList();
     }
-    return this.mariosList$.asObservable();
+    return this.lastMariosList$.asObservable();
   }
 
   private fetchMariosList(): void {
     this.http
-      .get<Marios[]>(this.baseUrl)
+      .get<MariosElement[]>(this.baseUrl)
       .pipe(takeUntil(this.destroy$))
       .subscribe((data) => {
         this.mariosData = [...data];
-        this.mariosList$.next(this.mariosData);
+        this.lastMariosList$.next(this.mariosData);
       });
+  }
+
+  private refreshMariosList(): void {
+    this.fetchMariosList();
+    this.fetchMariosReceivedByEmployee();
+    this.fetchMariosSentByEmployee();
   }
 
   getMariosById(mariosId: string): Observable<Marios> {
@@ -43,9 +55,8 @@ export class MariosService {
     this.http
       .post<Marios>(this.baseUrl, payload)
       .pipe(takeUntil(this.destroy$))
-      .subscribe((data) => {
-        this.mariosData = [...this.mariosData, data];
-        this.mariosList$.next(this.mariosData);
+      .subscribe(() => {
+        this.refreshMariosList();
       });
   }
 
@@ -53,11 +64,8 @@ export class MariosService {
     this.http
       .put<Marios>(`${this.baseUrl}/${marios.id}`, marios)
       .pipe(takeUntil(this.destroy$))
-      .subscribe((data) => {
-        this.mariosData = this.mariosData.map((marios) =>
-          marios.id === data.id ? data : marios
-        );
-        this.mariosList$.next(this.mariosData);
+      .subscribe(() => {
+        this.refreshMariosList();
       });
   }
 
@@ -66,20 +74,29 @@ export class MariosService {
       .delete(`${this.baseUrl}/${mariosId}`)
       .pipe(takeUntil(this.destroy$))
       .subscribe(() => {
-        this.mariosData = this.mariosData.filter((marios) => marios.id !== mariosId);
-        this.mariosList$.next(this.mariosData);
+        this.refreshMariosList();
       });
   }
 
-  getMariosSentByEmployee(employeeId: string): Observable<MariosList> {
-    return this.http
-      .get<MariosList>(`${this.baseUrl}/sent/${employeeId}`)
-      .pipe(takeUntil(this.destroy$));
+  fetchMariosSentByEmployee(): void {
+    const employeeId = this.sessionService.getUserUUID();
+    this.http
+      .get<MariosElement[]>(`${this.baseUrl}/sent/${employeeId}`)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((data) => {
+        this.mariosData = [...data];
+        this.sentMariosList$.next(this.mariosData);
+      });
   }
 
-  getMariosReceivedByEmployee(employeeId: string): Observable<MariosList> {
-    return this.http
-      .get<MariosList>(`${this.baseUrl}/receive/${employeeId}`)
-      .pipe(takeUntil(this.destroy$));
+  fetchMariosReceivedByEmployee(): void {
+    const employeeId = this.sessionService.getUserUUID();
+    this.http
+      .get<MariosElement[]>(`${this.baseUrl}/receive/${employeeId}`)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((data) => {
+        this.mariosData = [...data];
+        this.receivedMariosList$.next(this.mariosData);
+      });
   }
 }
