@@ -1,3 +1,4 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "./app/shared/variables/global.scss";
 
 @font-face {
@@ -36,3 +37,6 @@ a {
 .no-padding {
   padding: 0;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

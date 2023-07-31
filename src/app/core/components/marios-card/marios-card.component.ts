@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core';
 import { Marios } from '../../models/marios.model';
 import { Employee } from '../../models/employee.model';
 import { MariosReaction } from '../../enums/marios-reaction.enum';
+import { MatDialog } from '@angular/material/dialog';
+import { MariosDialogComponent } from '../marios-dialog/marios-dialog.component';
 
 @Component({
   selector: 'app-marios-card',
@@ -12,6 +14,8 @@ export class MariosCardComponent {
   @Input() public marios!: Marios;
   @Input() public employee!: Employee;
   public isHovered = false;
+
+  constructor(public dialog: MatDialog) {}
 
   getReactionMessage(): string {
     switch (this.marios.reaction) {
@@ -38,5 +42,13 @@ export class MariosCardComponent {
 
   onMouseLeave(): void {
     this.isHovered = false;
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(MariosDialogComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 }

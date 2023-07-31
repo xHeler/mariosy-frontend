@@ -23,8 +23,8 @@ $color-gray-light: #a1a1a1;
 .marios-container {
   @include flex-left();
   flex-direction: column;
-  width: 320px;
-  height: 160px;
+  width: 19rem;
+  height: 10rem;
   background-color: $color-text-light;
   padding-left: 6px;
   border-radius: 5px;

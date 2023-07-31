@@ -6,6 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { RetryInterceptor } from './core/interceptors/retry.interceptor';
@@ -23,6 +24,8 @@ import { InfoCardComponent } from './core/components/info-card/info-card.compone
 import { MariosCardComponent } from './core/components/marios-card/marios-card.component';
 import { MariosListComponent } from './core/components/marios-list/marios-list.component';
 import { TruncatePipe } from './shared/pipes/truncate.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MariosDialogComponent } from './core/components/marios-dialog/marios-dialog.component';
 
 @NgModule({
   declarations: [
@@ -40,8 +43,16 @@ import { TruncatePipe } from './shared/pipes/truncate.pipe';
     MariosCardComponent,
     MariosListComponent,
     TruncatePipe,
+    MariosDialogComponent,
   ],
-  imports: [BrowserModule, NgbModule, HttpClientModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    MatDialogModule,
+    NgbModule,
+    HttpClientModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
