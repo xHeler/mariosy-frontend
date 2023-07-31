@@ -11,11 +11,17 @@ import { SessionService } from './session.service';
 })
 export class MariosService {
   private baseUrl = '/api/marios';
-  private mariosData: MariosElement[] = [];
+  private lastMariosData: MariosElement[] = [];
+  private sentMariosData: MariosElement[] = [];
+  private receiveMariosData: MariosElement[] = [];
+
   private lastMariosList$ = new ReplaySubject<MariosElement[]>(1);
   private sentMariosList$ = new ReplaySubject<MariosElement[]>(1);
   private receivedMariosList$ = new ReplaySubject<MariosElement[]>(1);
   private destroy$ = new Subject<void>();
+
+  private sentMariosListSize = 0;
+  private receivedMariosListSize = 0;
 
   constructor(
     private http: HttpClient,
@@ -23,10 +29,32 @@ export class MariosService {
   ) {}
 
   get lastMariosList(): Observable<MariosElement[]> {
-    if (this.mariosData.length === 0) {
+    if (this.lastMariosData.length === 0) {
       this.fetchMariosList();
     }
     return this.lastMariosList$.asObservable();
+  }
+
+  get sentMariosList(): Observable<MariosElement[]> {
+    if (this.sentMariosData.length === 0) {
+      this.fetchMariosList();
+    }
+    return this.sentMariosList$.asObservable();
+  }
+
+  get receiveMariosList(): Observable<MariosElement[]> {
+    if (this.receiveMariosData.length === 0) {
+      this.fetchMariosList();
+    }
+    return this.receivedMariosList$.asObservable();
+  }
+
+  public getSentMariosListSize(): number {
+    return this.sentMariosListSize;
+  }
+
+  public getReceiveMariosListSize(): number {
+    return this.receivedMariosListSize;
   }
 
   private fetchMariosList(): void {
@@ -34,12 +62,12 @@ export class MariosService {
       .get<MariosElement[]>(this.baseUrl)
       .pipe(takeUntil(this.destroy$))
       .subscribe((data) => {
-        this.mariosData = [...data];
-        this.lastMariosList$.next(this.mariosData);
+        this.lastMariosData = [...data];
+        this.lastMariosList$.next(this.lastMariosData);
       });
   }
 
-  private refreshMariosList(): void {
+  public refreshMariosList(): void {
     this.fetchMariosList();
     this.fetchMariosReceivedByEmployee();
     this.fetchMariosSentByEmployee();
@@ -84,8 +112,9 @@ export class MariosService {
       .get<MariosElement[]>(`${this.baseUrl}/sent/${employeeId}`)
       .pipe(takeUntil(this.destroy$))
       .subscribe((data) => {
-        this.mariosData = [...data];
-        this.sentMariosList$.next(this.mariosData);
+        this.sentMariosData = [...data];
+        this.sentMariosList$.next(this.sentMariosData);
+        this.sentMariosListSize = this.sentMariosData.length;
       });
   }
 
@@ -95,8 +124,9 @@ export class MariosService {
       .get<MariosElement[]>(`${this.baseUrl}/receive/${employeeId}`)
       .pipe(takeUntil(this.destroy$))
       .subscribe((data) => {
-        this.mariosData = [...data];
-        this.receivedMariosList$.next(this.mariosData);
+        this.receiveMariosData = [...data];
+        this.receivedMariosList$.next(this.receiveMariosData);
+        this.receivedMariosListSize = this.receiveMariosData.length;
       });
   }
 }
