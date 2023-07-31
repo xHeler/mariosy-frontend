@@ -5,7 +5,7 @@ $card-width: 28rem;
 $card-height: 15rem;
 $mario-logo-width: 200px;
 $mario-logo-height: 200px;
-$box-shadow: 6px 8px 10px
+$box-shadow: 0 8px 10px
   rgba(
     $color: #000000,
     $alpha: 0.45,
@@ -79,7 +79,7 @@ $letter-spacing-huge: 20px;
     position: relative;
 
     > img {
-      opacity: 0.5;
+      opacity: 0.45;
       width: $mario-logo-width;
       height: $mario-logo-height;
     }
