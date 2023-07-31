@@ -69,6 +69,7 @@ $letter-spacing-huge: 20px;
         $color-text-dark
       );
       padding-left: 40px;
+      line-height: 3rem;
     }
   }
 
@@ -89,7 +90,7 @@ $letter-spacing-huge: 20px;
       left: 0;
       position: absolute;
       text-align: center;
-      top: calc(#{6rem} / 7);
+      top: calc(#{10rem} / 2);
       width: 100%;
 
       @include font-style(
