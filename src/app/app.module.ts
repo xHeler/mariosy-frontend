@@ -26,6 +26,7 @@ import { MariosListComponent } from './core/components/marios-list/marios-list.c
 import { TruncatePipe } from './shared/pipes/truncate.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MariosDialogComponent } from './core/components/marios-dialog/marios-dialog.component';
+import { ReactionMessagePipe } from './shared/pipes/reaction-message.pipe';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { MariosDialogComponent } from './core/components/marios-dialog/marios-di
     MariosListComponent,
     TruncatePipe,
     MariosDialogComponent,
+    ReactionMessagePipe,
   ],
   imports: [
     BrowserModule,
