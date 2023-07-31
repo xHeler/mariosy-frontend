@@ -1,8 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Marios } from '../../models/marios.model';
 import { Employee } from '../../models/employee.model';
-import { MariosReaction } from '../../enums/marios-reaction.enum';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MariosDialogComponent } from '../marios-dialog/marios-dialog.component';
 
 @Component({
@@ -17,25 +16,6 @@ export class MariosCardComponent {
 
   constructor(public dialog: MatDialog) {}
 
-  getReactionMessage(): string {
-    switch (this.marios.reaction) {
-      case MariosReaction.THANK_YOU:
-        return 'Thank you!';
-      case MariosReaction.GOOD_JOB:
-        return 'Good job!';
-      case MariosReaction.IMPRESSIVE:
-        return 'Impressive!';
-      case MariosReaction.EXCEPTIONAL:
-        return 'Exceptional!';
-      case MariosReaction.AWESOME:
-        return 'Awesome!';
-      case MariosReaction.OUTSTANDING:
-        return 'Outstanding!';
-      default:
-        return 'Great job!';
-    }
-  }
-
   onMouseEnter(): void {
     this.isHovered = true;
   }
@@ -45,7 +25,14 @@ export class MariosCardComponent {
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(MariosDialogComponent);
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.data = {
+      marios: this.marios,
+      employee: this.employee,
+    };
+
+    const dialogRef = this.dialog.open(MariosDialogComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);

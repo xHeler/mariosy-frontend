@@ -14,7 +14,7 @@ export class HomePageComponent {
     receiversId: ['receiver456', 'receiver789'],
     title: 'Greetings',
     message: 'Hello team, I wanted to express my gratitude for your hard work!',
-    reaction: MariosReaction.THANK_YOU,
+    reaction: MariosReaction.GOOD_JOB,
   };
 
   exampleEmployee: Employee = {
