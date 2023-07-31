@@ -26,7 +26,8 @@ $color-gray-light: #a1a1a1;
   width: 19rem;
   height: 10rem;
   background-color: $color-text-light;
-  padding-left: 6px;
+  padding-top: 8px;
+  padding-left: 8px;
   border-radius: 5px;
 }
 
@@ -39,17 +40,18 @@ $color-gray-light: #a1a1a1;
   }
 
   > p {
-    @include font-style($font-weight-bold, 16px, 0px);
+    @include font-style(700, 17px, 0px);
     margin: 0;
   }
 }
 
 .marios-card-author {
-  color: $color-primary;
+  color: $color-text-pink;
 }
 
 .marios-card-comment {
   color: $color-gray-light;
+  font-size: 16px !important;
 }
 
 .marios-card-see-more {

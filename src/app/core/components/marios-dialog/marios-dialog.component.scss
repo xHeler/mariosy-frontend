@@ -1,8 +1,5 @@
 @import "../../../../app/shared/variables/global.scss";
 
-$color-from-text: #ea808e;
-$color-text-gray-light: #A1A1A1;
-
 .dialog-container {
   max-width: 33rem;
   margin: 0 auto;
@@ -18,7 +15,7 @@ $color-text-gray-light: #A1A1A1;
 }
 
 .marios-card-author {
-  color: $color-from-text;
+  color: $color-text-pink;
 }
 
 .marios-card {
