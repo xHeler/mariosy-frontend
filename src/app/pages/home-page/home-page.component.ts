@@ -19,7 +19,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.mariosService.refreshMariosList();
-    this.mariosService.receiveMariosList
+    this.mariosService.receivedMariosList
       .pipe(takeUntil(this.destroy$))
       .subscribe((receivedMariosData) => {
         this.recivedCounter = receivedMariosData.length;

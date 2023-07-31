@@ -6,6 +6,7 @@ import { MariosReaction } from 'src/app/core/enums/marios-reaction.enum';
 })
 export class ReactionMessagePipe implements PipeTransform {
   transform(reaction: MariosReaction): string {
+    console.log(reaction)
     switch (reaction) {
       case MariosReaction.THANK_YOU:
         return 'Thank you!';
