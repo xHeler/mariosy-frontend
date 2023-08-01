@@ -4,7 +4,7 @@
   (keyup)="openDialog()"
   (mouseenter)="onMouseEnter()"
   (mouseleave)="onMouseLeave()"
-  tabindex="0" 
+  tabindex="0"
 >
   <div class="col-md-12">
     <div class="marios-card">
@@ -24,7 +24,10 @@
 
   <div class="col-md-12">
     <div class="marios-card">
-      <p class="marios-card-text">T: <span style="padding-left: 5px;"></span> {{ marios.title | truncate : 28 }}</p>
+      <p class="marios-card-text">
+        T: <span style="padding-left: 5px"></span>
+        {{ marios.title | truncate : 28 }}
+      </p>
     </div>
   </div>
 
@@ -32,7 +35,9 @@
     <div class="marios-card">
       <p class="marios-card-comment">
         {{ marios.message | truncate : 55 }}
-        <span class="marios-card-see-more">See more</span>
+        <span *ngIf="marios.message.length > 55" class="marios-card-see-more"
+          >See more</span
+        >
       </p>
     </div>
   </div>

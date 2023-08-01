@@ -1,0 +1,13 @@
+@mixin inner-container {
+  width: calc(#{$card-width} / 2);
+  display: flex;
+  justify-content: center;
+}
+
+@mixin font-style($weight, $size, $spacing, $color) {
+  font-family: $font-family;
+  font-weight: $weight;
+  font-size: $size;
+  letter-spacing: $spacing;
+  color: $color;
+}

@@ -1,36 +1,7 @@
 @import "../../../shared/variables/global.scss";
+@import "./mixins.scss";
+@import "./variables.scss";
 
-// Variables
-$card-width: 28rem;
-$card-height: 15rem;
-$mario-logo-width: 12rem;
-$mario-logo-height: 12rem;
-$box-shadow: 0 8px 10px
-  rgba(
-    $color: #000000,
-    $alpha: 0.45,
-  );
-$letter-spacing-large: 0.4rem;
-$font-size-huge: 8rem;
-$letter-spacing-huge: 1rem;
-$border-radius: 5px;
-
-// Mixins
-@mixin inner-container {
-  width: calc(#{$card-width} / 2);
-  display: flex;
-  justify-content: center;
-}
-
-@mixin font-style($weight, $size, $spacing, $color) {
-  font-family: $font-family;
-  font-weight: $weight;
-  font-size: $size;
-  letter-spacing: $spacing;
-  color: $color;
-}
-
-// Styles
 .card {
   cursor: pointer;
   height: $card-height;
