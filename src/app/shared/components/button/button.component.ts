@@ -14,16 +14,6 @@ export class ButtonComponent {
 
   @Output() public buttonClick: EventEmitter<void> = new EventEmitter();
 
-  public getSvgPlacementMargin(): string {
-    if (this.svgPlacement === 'start') {
-      return '0 1rem 0 0.5rem';
-    } else if (this.svgPlacement === 'end') {
-      return '0 0.2rem 0 1rem';
-    } else {
-      return '0';
-    }
-  }
-
   public onClick(): void {
     if (!this.isDisabled) {
       this.buttonClick.emit();
