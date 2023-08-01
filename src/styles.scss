@@ -1,21 +1,41 @@
-@import './app/shared/variables/global.scss';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "./app/shared/variables/global.scss";
+
+@font-face {
+  font-family: Open Sans;
+  src: url(assets/fonts/OpenSans.ttf) format("truetype");
+}
 
 html {
   margin: 0;
   padding: 0;
   height: 100%;
+  background-color: $color-secondary;
 }
 
 body {
   background: linear-gradient(
     178.38deg,
-    #e74850 13.52%,
-    #236fe9 34.61%,
-    #4286f4 69.76%
+    $color-primary 13.52%,
+    $color-secondary-ligth 34.61%,
+    $color-secondary 69.76%
   );
   margin: 0;
+  padding: 0;
   font-size: 14px;
-  font-family: "Open Sans", sans-serif;
+  font-family: $font-family;
   font-weight: 300;
-  color: #000;
+  color: $color-text-dark;
+  overflow: -moz-scrollbars-vertical; 
+  overflow-y: scroll;
+  line-height: 1.2rem;
 }
+
+a {
+  text-decoration: none;
+}
+
+.no-padding {
+  padding: 0;
+}
+

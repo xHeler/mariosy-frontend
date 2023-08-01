@@ -1,0 +1,53 @@
+<div
+  class="marios-container"
+  (click)="openDialog()"
+  (keyup)="openDialog()"
+  (mouseenter)="onMouseEnter()"
+  (mouseleave)="onMouseLeave()"
+  tabindex="0"
+>
+  <div class="col-md-12">
+    <div class="marios-card">
+      <img
+        src="assets/images/person.svg"
+        alt="A small light pink icon look like person."
+      />
+      <span class="marios-card-author">
+        From: {{ employee.firstName }} {{ employee.lastName }}
+      </span>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="marios-card">
+      <img src="assets/images/star.svg" alt="A green star icon." />
+      <span>{{ marios.reaction | reactionMessage }}</span>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="marios-card">
+      <span class="title-margin">T:</span>
+      <span class="marios-card-text">
+        {{ marios.title | truncate : 28 }}
+      </span>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="marios-card">
+      <div>
+        <span class="marios-card-comment">
+          {{ marios.message | truncate : 55 }}
+        </span>
+        <span *ngIf="marios.message.length > 55" class="marios-card-see-more"
+          >See more</span
+        >
+      </div>
+    </div>
+  </div>
+
+  <div class="click-label-layer" *ngIf="isHovered">
+    <div class="click-label">READ MORE</div>
+  </div>
+</div>

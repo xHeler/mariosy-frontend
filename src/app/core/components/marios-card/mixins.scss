@@ -1,0 +1,17 @@
+@mixin hover-effect {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: black;
+}
+
+@mixin font-style($weight, $size, $spacing) {
+  font-family: $font-family;
+  font-weight: $weight;
+  font-size: $size;
+  letter-spacing: $spacing;
+}
+
+@mixin flex-left() {
+  display: flex;
+  justify-content: left;
+  align-items: left;
+}

@@ -1,0 +1,13 @@
+<div class="container-fluid d-flex no-padding">
+  <div class="row">
+    <div class="col-md-12 mb-2">
+      <h4>{{ label | uppercase }}</h4>
+    </div>
+    <div class="col-md-4 mb-4" *ngFor="let mariosElement of mariosList.slice(0, 9)">
+      <app-marios-card
+        [marios]="mariosElement.marios"
+        [employee]="mariosElement.sender"
+      ></app-marios-card>
+    </div>
+  </div>
+</div>

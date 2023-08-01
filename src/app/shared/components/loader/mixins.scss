@@ -1,0 +1,16 @@
+@mixin scaling-animation {
+  animation: scaling #{$animation-duration} ease-in-out infinite;
+
+  @keyframes scaling {
+    0%,
+    100% {
+      transform: scale(0.1);
+    }
+    40% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1);
+    }
+  }
+}

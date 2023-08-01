@@ -3,33 +3,73 @@ import { Injectable } from '@angular/core';
 import { Observable, ReplaySubject, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Marios } from '../models/marios.model';
-import { MariosList } from '../models/marios-list.model';
+import { MariosElement } from '../models/marios-element.model';
+import { SessionService } from './session.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MariosService {
   private baseUrl = '/api/marios';
-  private mariosData: Marios[] = [];
-  private mariosList$ = new ReplaySubject<Marios[]>(1);
+  private lastMariosData: MariosElement[] = [];
+  private sentMariosData: MariosElement[] = [];
+  private receivedMariosData: MariosElement[] = [];
+
+  private lastMariosList$ = new ReplaySubject<MariosElement[]>(1);
+  private sentMariosList$ = new ReplaySubject<MariosElement[]>(1);
+  private receivedMariosList$ = new ReplaySubject<MariosElement[]>(1);
   private destroy$ = new Subject<void>();
 
-  constructor(private http: HttpClient) {}
+  private sentMariosListSize = 0;
+  private receivedMariosListSize = 0;
 
-  get mariosList(): Observable<Marios[]> {
-    if (this.mariosData.length === 0) {
+  constructor(
+    private http: HttpClient,
+    private sessionService: SessionService
+  ) {}
+
+  get lastMariosList(): Observable<MariosElement[]> {
+    if (this.lastMariosData.length === 0) {
       this.fetchMariosList();
     }
-    return this.mariosList$.asObservable();
+    return this.lastMariosList$.asObservable();
+  }
+
+  get sentMariosList(): Observable<MariosElement[]> {
+    if (this.sentMariosData.length === 0) {
+      this.fetchMariosList();
+    }
+    return this.sentMariosList$.asObservable();
+  }
+
+  get receivedMariosList(): Observable<MariosElement[]> {
+    if (this.receivedMariosData.length === 0) {
+      this.fetchMariosList();
+    }
+    return this.receivedMariosList$.asObservable();
+  }
+
+  public fetchDataFromServer(): void {
+    this.fetchMariosList();
+    this.fetchMariosReceivedByEmployee();
+    this.fetchMariosSentByEmployee();
+  }
+
+  public getSentMariosListSize(): number {
+    return this.sentMariosListSize;
+  }
+
+  public getReceiveMariosListSize(): number {
+    return this.receivedMariosListSize;
   }
 
   private fetchMariosList(): void {
     this.http
-      .get<Marios[]>(this.baseUrl)
+      .get<MariosElement[]>(this.baseUrl)
       .pipe(takeUntil(this.destroy$))
       .subscribe((data) => {
-        this.mariosData = [...data];
-        this.mariosList$.next(this.mariosData);
+        this.lastMariosData = [...data];
+        this.lastMariosList$.next(this.lastMariosData);
       });
   }
 
@@ -43,9 +83,8 @@ export class MariosService {
     this.http
       .post<Marios>(this.baseUrl, payload)
       .pipe(takeUntil(this.destroy$))
-      .subscribe((data) => {
-        this.mariosData = [...this.mariosData, data];
-        this.mariosList$.next(this.mariosData);
+      .subscribe(() => {
+        this.fetchDataFromServer();
       });
   }
 
@@ -53,11 +92,8 @@ export class MariosService {
     this.http
       .put<Marios>(`${this.baseUrl}/${marios.id}`, marios)
       .pipe(takeUntil(this.destroy$))
-      .subscribe((data) => {
-        this.mariosData = this.mariosData.map((marios) =>
-          marios.id === data.id ? data : marios
-        );
-        this.mariosList$.next(this.mariosData);
+      .subscribe(() => {
+        this.fetchDataFromServer();
       });
   }
 
@@ -66,20 +102,31 @@ export class MariosService {
       .delete(`${this.baseUrl}/${mariosId}`)
       .pipe(takeUntil(this.destroy$))
       .subscribe(() => {
-        this.mariosData = this.mariosData.filter((marios) => marios.id !== mariosId);
-        this.mariosList$.next(this.mariosData);
+        this.fetchDataFromServer();
       });
   }
 
-  getMariosSentByEmployee(employeeId: string): Observable<MariosList> {
-    return this.http
-      .get<MariosList>(`${this.baseUrl}/sent/${employeeId}`)
-      .pipe(takeUntil(this.destroy$));
+  fetchMariosSentByEmployee(): void {
+    const employeeId = this.sessionService.getUserUUID();
+    this.http
+      .get<MariosElement[]>(`${this.baseUrl}/sent/${employeeId}`)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((data) => {
+        this.sentMariosData = [...data];
+        this.sentMariosList$.next(this.sentMariosData);
+        this.sentMariosListSize = this.sentMariosData.length;
+      });
   }
 
-  getMariosReceivedByEmployee(employeeId: string): Observable<MariosList> {
-    return this.http
-      .get<MariosList>(`${this.baseUrl}/receive/${employeeId}`)
-      .pipe(takeUntil(this.destroy$));
+  fetchMariosReceivedByEmployee(): void {
+    const employeeId = this.sessionService.getUserUUID();
+    this.http
+      .get<MariosElement[]>(`${this.baseUrl}/receive/${employeeId}`)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((data) => {
+        this.receivedMariosData = [...data];
+        this.receivedMariosList$.next(this.receivedMariosData);
+        this.receivedMariosListSize = this.receivedMariosData.length;
+      });
   }
 }

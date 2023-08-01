@@ -2,38 +2,31 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
 
+import { HomePageComponent } from './pages/home-page/home-page.component';
+import { ReceivedMariosComponent } from './pages/received-marios/received-marios.component';
+import { SentMariosComponent } from './pages/sent-marios/sent-marios.component';
+import { AddMariosComponent } from './pages/add-marios/add-marios.component';
+
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   {
     path: 'home',
-    loadChildren: () =>
-      import('./modules/home-page/home-page.module').then(
-        (m) => m.HomePageModule
-      ),
+    component: HomePageComponent,
   },
   {
     path: 'received-marios',
-    loadChildren: () =>
-      import('./modules/received-marios/received-marios.module').then(
-        (m) => m.ReceivedMariosModule
-      ),
+    component: ReceivedMariosComponent,
   },
   {
     path: 'sent-marios',
-    loadChildren: () =>
-      import('./modules/sent-marios/sent-marios.module').then(
-        (m) => m.SentMariosModule
-      ),
+    component: SentMariosComponent,
   },
   {
     path: 'add-marios',
-    loadChildren: () =>
-      import('./modules/add-marios/add-marios.module').then(
-        (m) => m.AddMariosModule
-      ),
+    component: AddMariosComponent,
   },
   { path: 'page-not-found', component: PageNotFoundComponent },
-  { path: '**', redirectTo: 'page-not-found' }, // Wildcard route for 404
+  { path: '**', redirectTo: 'page-not-found' },
 ];
 
 @NgModule({

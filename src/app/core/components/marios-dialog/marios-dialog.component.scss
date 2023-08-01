@@ -1,0 +1,60 @@
+@import "../../../../app/shared/variables/global.scss";
+
+.dialog-container {
+  max-width: 33rem;
+  margin: 0 auto;
+  color: $color-text-dark;
+  font-family: $font-family;
+}
+
+.dialog-header {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.marios-card-author {
+  color: $color-text-pink;
+}
+
+.marios-card {
+  .marios-title {
+    font-size: 1.5rem;
+    font-weight: $font-weight-bold-light;
+    font-family: $font-family;
+  }
+}
+
+.marios-card-author {
+  font-size: 1.1rem;
+}
+
+.reaction-container {
+  display: flex !important;
+  justify-content: flex-end !important;
+  font-size: 1.3rem;
+}
+
+.marios-card-comment {
+  font-weight: $font-weight-bold-light;
+  font-size: 1rem;
+  color: $color-text-gray-light;
+}
+
+img {
+  margin-right: 0.5rem;
+  margin-bottom: 0.3rem;
+}
+
+span {
+  font-family: $font-family;
+  font-weight: $font-weight-bold-light;
+}
+
+button {
+  background: transparent;
+  color: white;
+  border: none;
+  outline: none;
+}

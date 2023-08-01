@@ -6,6 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { RetryInterceptor } from './core/interceptors/retry.interceptor';
@@ -14,6 +15,18 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
 import { LoaderInterceptor } from './core/interceptors/loader.interceptor';
+import { ButtonComponent } from './shared/components/button/button.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
+import { AddMariosComponent } from './pages/add-marios/add-marios.component';
+import { SentMariosComponent } from './pages/sent-marios/sent-marios.component';
+import { ReceivedMariosComponent } from './pages/received-marios/received-marios.component';
+import { InfoCardComponent } from './core/components/info-card/info-card.component';
+import { MariosCardComponent } from './core/components/marios-card/marios-card.component';
+import { MariosListComponent } from './core/components/marios-list/marios-list.component';
+import { TruncatePipe } from './shared/pipes/truncate.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MariosDialogComponent } from './core/components/marios-dialog/marios-dialog.component';
+import { ReactionMessagePipe } from './shared/pipes/reaction-message.pipe';
 
 @NgModule({
   declarations: [
@@ -22,8 +35,26 @@ import { LoaderInterceptor } from './core/interceptors/loader.interceptor';
     HeaderComponent,
     FooterComponent,
     PageNotFoundComponent,
+    ButtonComponent,
+    HomePageComponent,
+    AddMariosComponent,
+    SentMariosComponent,
+    ReceivedMariosComponent,
+    InfoCardComponent,
+    MariosCardComponent,
+    MariosListComponent,
+    TruncatePipe,
+    MariosDialogComponent,
+    ReactionMessagePipe,
   ],
-  imports: [BrowserModule, NgbModule, HttpClientModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    MatDialogModule,
+    NgbModule,
+    HttpClientModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

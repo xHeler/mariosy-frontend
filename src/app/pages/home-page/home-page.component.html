@@ -1,0 +1,30 @@
+<div class="container-fluid no-padding">
+  <div class="row">
+    <div class="col-md-6 mb-5 mt-5">
+      <a routerLink="/received-marios">
+        <app-info-card
+          [label]="'RECEIVED MARIOS: '"
+          [counter]="recivedCounter"
+        ></app-info-card>
+      </a>
+    </div>
+    <div class="col-md-6 mb-5 mt-5">
+      <a routerLink="/sent-marios">
+        <app-info-card
+          [label]="'SENT MARIOS:  '"
+          [counter]="sentCounter"
+        ></app-info-card>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="d-flex justify-content-end">
+  <a routerLink="/add-marios">
+    <app-button buttonLabel="ADD MARIOS" svgPlacement="end"></app-button>
+  </a>
+</div>
+<app-marios-list
+  [label]="'LAST MARIOS:'"
+  [mariosList]="lastMariosData"
+></app-marios-list>
