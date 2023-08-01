@@ -13,6 +13,7 @@ $box-shadow: 0 8px 10px
 $letter-spacing-large: 0.4rem;
 $font-size-huge: 8rem;
 $letter-spacing-huge: 1rem;
+$border-radius: 5px;
 
 // Mixins
 @mixin inner-container {
@@ -33,7 +34,7 @@ $letter-spacing-huge: 1rem;
 .card {
   cursor: pointer;
   height: $card-height;
-  border-radius: 5px;
+  border-radius: $border-radius;
   background-color: $color-text-light;
   box-shadow: $box-shadow;
   display: flex;
