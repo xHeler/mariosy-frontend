@@ -62,7 +62,7 @@
       left: 0;
       position: absolute;
       text-align: center;
-      top: calc(#{10rem} / 2);
+      margin-top: 5rem;
       width: 100%;
 
       @include font-style(
