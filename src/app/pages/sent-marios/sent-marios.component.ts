@@ -16,7 +16,7 @@ export class SentMariosComponent implements OnInit, OnDestroy {
   constructor(private mariosService: MariosService) {}
 
   ngOnInit() {
-    this.mariosService.refreshMariosList();
+    this.mariosService.fetchDataFromServer();
     this.mariosService.sentMariosList
       .pipe(takeUntil(this.destroy$))
       .subscribe((sentMariosData) => {

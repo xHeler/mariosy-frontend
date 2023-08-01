@@ -18,7 +18,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
   constructor(private mariosService: MariosService) {}
 
   ngOnInit() {
-    this.mariosService.refreshMariosList();
+    this.mariosService.fetchDataFromServer();
     this.mariosService.receivedMariosList
       .pipe(takeUntil(this.destroy$))
       .subscribe((receivedMariosData) => {

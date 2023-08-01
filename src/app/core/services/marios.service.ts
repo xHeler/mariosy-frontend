@@ -49,7 +49,7 @@ export class MariosService {
     return this.receivedMariosList$.asObservable();
   }
 
-  public refreshMariosList(): void {
+  public fetchDataFromServer(): void {
     this.fetchMariosList();
     this.fetchMariosReceivedByEmployee();
     this.fetchMariosSentByEmployee();
@@ -84,7 +84,7 @@ export class MariosService {
       .post<Marios>(this.baseUrl, payload)
       .pipe(takeUntil(this.destroy$))
       .subscribe(() => {
-        this.refreshMariosList();
+        this.fetchDataFromServer();
       });
   }
 
@@ -93,7 +93,7 @@ export class MariosService {
       .put<Marios>(`${this.baseUrl}/${marios.id}`, marios)
       .pipe(takeUntil(this.destroy$))
       .subscribe(() => {
-        this.refreshMariosList();
+        this.fetchDataFromServer();
       });
   }
 
@@ -102,7 +102,7 @@ export class MariosService {
       .delete(`${this.baseUrl}/${mariosId}`)
       .pipe(takeUntil(this.destroy$))
       .subscribe(() => {
-        this.refreshMariosList();
+        this.fetchDataFromServer();
       });
   }
 
