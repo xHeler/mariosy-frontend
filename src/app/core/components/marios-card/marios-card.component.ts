@@ -32,10 +32,6 @@ export class MariosCardComponent {
       employee: this.employee,
     };
 
-    const dialogRef = this.dialog.open(MariosDialogComponent, dialogConfig);
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
-    });
+    this.dialog.open(MariosDialogComponent, dialogConfig);
   }
 }
