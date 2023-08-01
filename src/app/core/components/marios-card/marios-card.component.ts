@@ -25,7 +25,6 @@ export class MariosCardComponent {
   }
 
   openDialog() {
-    console.log(this.marios);
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.data = {
