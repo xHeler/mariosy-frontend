@@ -8,7 +8,6 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class ButtonComponent {
   @Input() public buttonLabel = '';
   @Input() public isDisabled = false;
-  @Input() public btnClass = '';
   @Input() public svgPlacement: 'start' | 'end' | 'none' = 'none';
   @Input() public borderColor?: string;
 
