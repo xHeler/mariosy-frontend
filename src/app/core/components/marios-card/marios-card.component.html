@@ -27,8 +27,8 @@
 
   <div class="col-md-12">
     <div class="marios-card">
+      <span class="title-margin">T:</span>
       <span class="marios-card-text">
-        T: <span class="ps-2"></span>
         {{ marios.title | truncate : 28 }}
       </span>
     </div>
@@ -36,12 +36,14 @@
 
   <div class="col-md-12">
     <div class="marios-card">
-      <span class="marios-card-comment">
-        {{ marios.message | truncate : 55 }}
+      <div>
+        <span class="marios-card-comment">
+          {{ marios.message | truncate : 55 }}
+        </span>
         <span *ngIf="marios.message.length > 55" class="marios-card-see-more"
           >See more</span
         >
-      </span>
+      </div>
     </div>
   </div>
 

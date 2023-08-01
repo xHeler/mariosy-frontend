@@ -20,11 +20,6 @@
   > img {
     margin-right: 0.5rem;
   }
-
-  > span {
-    @include font-style($font-weight-bold-light, 1rem, 0px);
-    margin: 0;
-  }
 }
 
 .marios-card-author {
@@ -38,6 +33,14 @@
 
 .marios-card-see-more {
   color: $color-text-dark;
+}
+
+span {
+  @include font-style($font-weight-bold-light, 1rem, 0px);
+}
+
+.title-margin {
+  margin-right: 0.7rem;
 }
 
 .marios-container {
