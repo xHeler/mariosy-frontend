@@ -49,6 +49,12 @@ export class MariosService {
     return this.receivedMariosList$.asObservable();
   }
 
+  public refreshMariosList(): void {
+    this.fetchMariosList();
+    this.fetchMariosReceivedByEmployee();
+    this.fetchMariosSentByEmployee();
+  }
+
   public getSentMariosListSize(): number {
     return this.sentMariosListSize;
   }
@@ -65,12 +71,6 @@ export class MariosService {
         this.lastMariosData = [...data];
         this.lastMariosList$.next(this.lastMariosData);
       });
-  }
-
-  public refreshMariosList(): void {
-    this.fetchMariosList();
-    this.fetchMariosReceivedByEmployee();
-    this.fetchMariosSentByEmployee();
   }
 
   getMariosById(mariosId: string): Observable<Marios> {

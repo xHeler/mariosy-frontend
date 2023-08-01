@@ -9,30 +9,30 @@
       <div class="row">
         <div class="col-md-6">
           <div class="marios-card">
-            <p class="marios-card-author">
+            <span class="marios-card-author">
               From: {{ data.employee.firstName }} {{ data.employee.lastName }}
-            </p>
+            </span>
           </div>
         </div>
 
         <div class="col-md-6 d-flex justify-content-end reaction-container">
-          <p>
+          <span>
             <img src="assets/images/star.svg" alt="A green star icon." />
             {{ data.marios.reaction | reactionMessage }}
-          </p>
+          </span>
         </div>
 
-        <div class="col-md-12">
+        <div class="col-md-12 mt-2">
           <div class="marios-card">
-            <h1>{{ data.marios.title }}</h1>
+            <span class="marios-title">{{ data.marios.title }}</span>
           </div>
         </div>
 
-        <div class="col-md-12">
+        <div class="col-md-12 mt-3">
           <div class="marios-card">
-            <p class="marios-card-comment">
+            <span class="marios-card-comment">
               {{ data.marios.message }}
-            </p>
+            </span>
           </div>
         </div>
       </div>

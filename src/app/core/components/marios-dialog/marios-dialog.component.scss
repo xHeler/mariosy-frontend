@@ -19,7 +19,7 @@
 }
 
 .marios-card {
-  h1 {
+  .marios-title {
     font-size: 1.5rem;
     font-weight: $font-weight-bold-light;
     font-family: $font-family;
@@ -27,11 +27,11 @@
 }
 
 .marios-card-author {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 .reaction-container {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
 }
 
 .marios-card-comment {
@@ -45,7 +45,7 @@ img {
   margin-bottom: 0.3rem;
 }
 
-p {
+span {
   font-family: $font-family;
   font-weight: $font-weight-bold-light;
 }
