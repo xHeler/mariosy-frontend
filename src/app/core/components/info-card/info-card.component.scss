@@ -61,7 +61,7 @@ $letter-spacing-huge: 20px;
     @include inner-container;
     align-items: center;
 
-    > p {
+    > span {
       @include font-style(
         $font-weight-bold,
         $font-size-large,
@@ -84,7 +84,7 @@ $letter-spacing-huge: 20px;
       height: $mario-logo-height;
     }
 
-    > p {
+    > span {
       margin: 0;
       padding: 0;
       left: 0;
