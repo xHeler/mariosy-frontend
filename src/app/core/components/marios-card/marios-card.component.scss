@@ -22,7 +22,7 @@
   }
 
   > p {
-    @include font-style(700, 1rem, 0px);
+    @include font-style($font-weight-bold-light, 1rem, 0px);
     margin: 0;
   }
 }
