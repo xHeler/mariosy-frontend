@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ReplaySubject } from 'rxjs';
 import { Employee } from '../../models/employee.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EmployeeService } from '../../services/employee.service';
 
 @Component({
   selector: 'app-add-marios-form',
@@ -8,45 +10,17 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./add-marios-form.component.scss'],
 })
 export class AddMariosFormComponent implements OnInit {
+  employeesData: Employee[] = [];
+  employees$ = new ReplaySubject<Employee[]>(1);
   form: FormGroup = new FormGroup({});
   staticChips: string[] = ['Chip 1', 'Chip 2', 'Chip 3'];
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private employeeService: EmployeeService
+  ) {}
 
-  employees: Employee[] = [
-    {
-      id: '1',
-      firstName: 'John',
-      lastName: 'Doe',
-      email: 'john.doe@example.com',
-    },
-    {
-      id: '2',
-      firstName: 'Jane',
-      lastName: 'Smith',
-      email: 'jane.smith@example.com',
-    },
-    {
-      id: '3',
-      firstName: 'Michael',
-      lastName: 'Johnson',
-      email: 'michael.johnson@example.com',
-    },
-    {
-      id: '4',
-      firstName: 'Emily',
-      lastName: 'Brown',
-      email: 'emily.brown@example.com',
-    },
-    {
-      id: '5',
-      firstName: 'Daniel',
-      lastName: 'Williams',
-      email: 'daniel.williams@example.com',
-    },
-  ];
-
-  selected = [];
+  selected: Employee[] = [];
 
   ngOnInit() {
     this.createForm();
@@ -65,5 +39,18 @@ export class AddMariosFormComponent implements OnInit {
     if (this.form.valid) {
       console.log(this.form.value);
     }
+  }
+
+  onSearchChange(event: { term: string; items: any[] }) {
+    this.employeeService.searchEmployees(event.term).subscribe(
+      (data) => {
+        this.employeesData = [...data];
+        this.employees$.next(this.employeesData);
+        console.log(this.employees$);
+      },
+      (error) => {
+        console.error('Error while fetching data:', error);
+      }
+    );
   }
 }

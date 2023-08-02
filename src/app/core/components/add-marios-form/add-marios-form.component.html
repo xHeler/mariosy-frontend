@@ -4,19 +4,18 @@
     <label for="userSearchInput">User Search:</label>
     <div class="form-group">
       <ng-select
-        [items]="employees"
-        bindLabel="customLabel"
+        [items]="employees$ | async"
+        bindLabel="firstName"
         placeholder="Select Category"
         appendTo="body"
         [multiple]="true"
         [(ngModel)]="selected"
         [clearable]="false"
         formControlName="userSearch"
+        (search)="onSearchChange($event)"
       >
         <ng-template ng-label-tmp let-item="item">
-          <span>{{
-            item.firstName + " " + item.lastName
-          }}</span>
+          <span>{{ item.firstName + " " + item.lastName }}</span>
         </ng-template>
         <ng-template
           ng-option-tmp
@@ -34,7 +33,7 @@
 
   <!-- Static Chips -->
   <div class="form-group">
-    <label>Static Chips:</label>
+    <span>Static Chips:</span>
     <div class="chip-list">
       <div class="chip" *ngFor="let chip of staticChips">{{ chip }}</div>
     </div>

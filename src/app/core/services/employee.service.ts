@@ -71,4 +71,10 @@ export class EmployeeService {
         this.employees$.next(this.employeesData);
       });
   }
+
+  searchEmployees(query: string): Observable<Employee[]> {
+    return this.http
+      .get<Employee[]>(`${this.employeeUrl}/search?q=${query}`)
+      .pipe(takeUntil(this.destroy$));
+  }
 }
