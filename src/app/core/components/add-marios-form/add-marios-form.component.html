@@ -14,8 +14,14 @@
         formControlName="userSearch"
         (search)="onSearchChange($event)"
       >
-        <ng-template ng-label-tmp let-item="item">
+        <ng-template ng-label-tmp let-item="item" let-clear="clear">
           <span>{{ item.firstName + " " + item.lastName }}</span>
+          <span
+            class="ng-value-icon left"
+            (click)="clear(item)"
+            aria-hidden="true"
+            >×</span
+          >
         </ng-template>
         <ng-template
           ng-option-tmp
