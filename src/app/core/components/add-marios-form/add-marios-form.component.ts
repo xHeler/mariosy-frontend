@@ -37,7 +37,9 @@ export class AddMariosFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.form.value.receiversId = this.form.value.receiversId.map((employee: Employee) => employee.id);
+    this.form.value.receiversId = this.form.value.receiversId.map(
+      (employee: Employee) => employee.id
+    );
     console.log(this.form.value);
     if (this.form.valid) {
       console.log(this.form.value);

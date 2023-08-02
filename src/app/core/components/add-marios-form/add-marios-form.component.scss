@@ -1,40 +1,93 @@
+@import "../../../shared/variables/global.scss";
+
+.employee-avatar {
+  background-image: url("/assets/images/person-yellow.svg");
+  background-repeat: no-repeat;
+  background-size: 1.3rem 1.3rem;
+  background-position: left center;
+  padding-left: 1.5rem;
+  margin-bottom: 0.3rem;
+}
+
+.search-field-multiselect {
+  color: #8d8080;
+  font-weight: $font-weight-bold-light;
+  font-size: 1.2rem;
+}
+
+::ng-deep .ng-select .ng-select-container {
+  border: 0 !important;
+}
+
+::ng-deep .ng-arrow-wrapper {
+  visibility: hidden;
+}
+
+::ng-deep .ng-value {
+  padding: 0.2rem !important;
+  border-radius: 0.3rem !important;
+  background-color: $color-accent !important;
+}
+
+::ng-deep .ng-value-icon {
+  border: 0 !important;
+}
+
+::ng-deep .ng-option-marked {
+  background-color: $color-accent !important;
+}
+
+::ng-deep .ng-option {
+  font-family: $font-family !important;
+  font-size: 1rem !important;
+  padding-left: 2rem;
+}
+
+::ng-deep .ng-placeholder {
+  margin-top: 0.1rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
 .form-container {
-    max-width: 400px;
-    margin: 0 auto;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .label {
-    display: block;
-    font-weight: bold;
-  }
-  
-  .input {
-    width: 100%;
-    padding: 5px;
-  }
-  
-  .chip-list {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  .chip {
-    background-color: #007bff;
-    color: #fff;
-    padding: 5px 10px;
-    margin-right: 5px;
-    margin-bottom: 5px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  textarea {
-    width: 100%;
-    height: 100px;
-    padding: 5px;
-  }
-  
+  margin: 0 auto;
+  background-color: $color-text-light;
+  padding: 1rem 2rem 1.5rem 1rem;
+  border-radius: 0.5rem;
+  font-family: $font-family;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.label {
+  display: block;
+  font-weight: bold;
+}
+
+.input {
+  width: 100%;
+  padding: 5px;
+}
+
+.chip-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.chip {
+  background-color: #007bff;
+  color: #fff;
+  padding: 5px 10px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+textarea {
+  width: 100%;
+  height: 100px;
+  padding: 5px;
+}
