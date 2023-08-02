@@ -1,5 +1,5 @@
 <div class="form-container" [formGroup]="form">
-  <div class="form-group">
+  <div class="form-group form-group-bottom-border">
     <ng-select
       class="search-field-multiselect employee-avatar custom-ng-select"
       [items]="employees$ | async"
@@ -34,8 +34,8 @@
     </ng-select>
   </div>
 
-  <div class="form-group">
-    <span>Select Category:</span>
+  <div class="form-group form-group-bottom-border">
+    <span class="label">Select Category:</span>
     <div class="chip-list">
       <mat-chip-listbox aria-label="Fish selection" formControlName="reaction">
         <mat-chip-option *ngFor="let value of enumValues" [value]="value">{{
@@ -45,31 +45,30 @@
     </div>
   </div>
 
-  <div class="form-group">
-    <label for="titleInput">Title:</label>
+  <div class="form-group form-group-bottom-border">
+    <span class="label" for="titleInput">Title:</span>
     <div class="title-container">
-      <input
+      <textarea
+        class="title-text-area"
         type="text"
         id="titleInput"
         formControlName="title"
-        placeholder="Enter title..."
-      />
+        placeholder="Enter marios title"
+      ></textarea>
     </div>
   </div>
 
   <div class="form-group">
-    <label for="commentInput">Comment:</label>
-    <textarea
-      id="commentInput"
-      formControlName="message"
-      placeholder="Enter comment..."
-    ></textarea>
+    <span class="label" for="commentInput">Comment:</span>
+    <textarea id="commentInput" formControlName="message"></textarea>
   </div>
-
-  <app-button
-    buttonLabel="SEND"
-    type="button"
-    borderColor="black"
-    (click)="onSubmit()"
-  ></app-button>
+  <div class="button-conatiner d-flex justify-content-end">
+    <app-button
+      buttonLabel="SEND"
+      type="button"
+      borderColor="black"
+      (click)="onSubmit()"
+      class="button-padding"
+    ></app-button>
+  </div>
 </div>
