@@ -2,5 +2,6 @@ export interface Employee {
   id?: string,
   firstName: string,
   lastName: string,
-  email: string
+  email: string,
+  label?: string;
 }

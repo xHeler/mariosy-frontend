@@ -1,0 +1,66 @@
+<div class="form-container" [formGroup]="form">
+  <!-- User search input -->
+  <div class="form-group">
+    <label for="userSearchInput">User Search:</label>
+    <div class="form-group">
+      <ng-select
+        [items]="employees"
+        bindLabel="customLabel"
+        placeholder="Select Category"
+        appendTo="body"
+        [multiple]="true"
+        [(ngModel)]="selected"
+        [clearable]="false"
+        formControlName="userSearch"
+      >
+        <ng-template ng-label-tmp let-item="item">
+          <span>{{
+            item.firstName + " " + item.lastName
+          }}</span>
+        </ng-template>
+        <ng-template
+          ng-option-tmp
+          let-item="item"
+          let-search="searchTerm"
+          let-index="index"
+        >
+          <span>{{
+            item.firstName + " " + item.lastName + " - " + item.email
+          }}</span>
+        </ng-template>
+      </ng-select>
+    </div>
+  </div>
+
+  <!-- Static Chips -->
+  <div class="form-group">
+    <label>Static Chips:</label>
+    <div class="chip-list">
+      <div class="chip" *ngFor="let chip of staticChips">{{ chip }}</div>
+    </div>
+  </div>
+
+  <!-- Title input -->
+  <div class="form-group">
+    <label for="titleInput">Title:</label>
+    <input
+      type="text"
+      id="titleInput"
+      formControlName="title"
+      placeholder="Enter title..."
+    />
+  </div>
+
+  <!-- Comment input -->
+  <div class="form-group">
+    <label for="commentInput">Comment:</label>
+    <textarea
+      id="commentInput"
+      formControlName="comment"
+      placeholder="Enter comment..."
+    ></textarea>
+  </div>
+
+  <!-- SENT button -->
+  <button type="button" (click)="onSubmit()">SENT</button>
+</div>

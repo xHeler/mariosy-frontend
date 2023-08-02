@@ -7,6 +7,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgSelectModule } from "@ng-select/ng-select";
 
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { RetryInterceptor } from './core/interceptors/retry.interceptor';
@@ -27,6 +29,7 @@ import { TruncatePipe } from './shared/pipes/truncate.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MariosDialogComponent } from './core/components/marios-dialog/marios-dialog.component';
 import { ReactionMessagePipe } from './shared/pipes/reaction-message.pipe';
+import { AddMariosFormComponent } from './core/components/add-marios-form/add-marios-form.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +49,7 @@ import { ReactionMessagePipe } from './shared/pipes/reaction-message.pipe';
     TruncatePipe,
     MariosDialogComponent,
     ReactionMessagePipe,
+    AddMariosFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +57,9 @@ import { ReactionMessagePipe } from './shared/pipes/reaction-message.pipe';
     NgbModule,
     HttpClientModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgSelectModule,
     BrowserAnimationsModule,
   ],
   providers: [
