@@ -20,7 +20,7 @@ export class ReceivedMariosComponent implements OnInit, OnDestroy {
     this.mariosService.receivedMariosList
       .pipe(takeUntil(this.destroy$))
       .subscribe((receivedMariosData) => {
-        this.receivedMariosData = receivedMariosData;
+        this.receivedMariosData = receivedMariosData.mariosElementList;
       });
   }
 

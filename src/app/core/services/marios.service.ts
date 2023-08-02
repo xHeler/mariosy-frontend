@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, ReplaySubject, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Marios } from '../models/marios.model';
-import { MariosElement } from '../models/marios-element.model';
+import { EmptyMariosList, MariosList } from '../models/marios-list.model';
 import { SessionService } from './session.service';
 
 @Injectable({
@@ -11,39 +11,36 @@ import { SessionService } from './session.service';
 })
 export class MariosService {
   private baseUrl = '/api/marios';
-  private lastMariosData: MariosElement[] = [];
-  private sentMariosData: MariosElement[] = [];
-  private receivedMariosData: MariosElement[] = [];
+  private lastMariosData: MariosList = EmptyMariosList;
+  private sentMariosData: MariosList = EmptyMariosList;
+  private receivedMariosData: MariosList = EmptyMariosList;
 
-  private lastMariosList$ = new ReplaySubject<MariosElement[]>(1);
-  private sentMariosList$ = new ReplaySubject<MariosElement[]>(1);
-  private receivedMariosList$ = new ReplaySubject<MariosElement[]>(1);
+  private lastMariosList$ = new ReplaySubject<MariosList>(1);
+  private sentMariosList$ = new ReplaySubject<MariosList>(1);
+  private receivedMariosList$ = new ReplaySubject<MariosList>(1);
   private destroy$ = new Subject<void>();
-
-  private sentMariosListSize = 0;
-  private receivedMariosListSize = 0;
 
   constructor(
     private http: HttpClient,
     private sessionService: SessionService
   ) {}
 
-  get lastMariosList(): Observable<MariosElement[]> {
-    if (this.lastMariosData.length === 0) {
+  get lastMariosList(): Observable<MariosList> {
+    if (this.lastMariosData.mariosElementList.length === 0) {
       this.fetchMariosList();
     }
     return this.lastMariosList$.asObservable();
   }
 
-  get sentMariosList(): Observable<MariosElement[]> {
-    if (this.sentMariosData.length === 0) {
+  get sentMariosList(): Observable<MariosList> {
+    if (this.sentMariosData.mariosElementList.length === 0) {
       this.fetchMariosList();
     }
     return this.sentMariosList$.asObservable();
   }
 
-  get receivedMariosList(): Observable<MariosElement[]> {
-    if (this.receivedMariosData.length === 0) {
+  get receivedMariosList(): Observable<MariosList> {
+    if (this.receivedMariosData.mariosElementList.length === 0) {
       this.fetchMariosList();
     }
     return this.receivedMariosList$.asObservable();
@@ -55,20 +52,12 @@ export class MariosService {
     this.fetchMariosSentByEmployee();
   }
 
-  public getSentMariosListSize(): number {
-    return this.sentMariosListSize;
-  }
-
-  public getReceiveMariosListSize(): number {
-    return this.receivedMariosListSize;
-  }
-
   private fetchMariosList(): void {
     this.http
-      .get<MariosElement[]>(this.baseUrl)
+      .get<MariosList>(this.baseUrl)
       .pipe(takeUntil(this.destroy$))
       .subscribe((data) => {
-        this.lastMariosData = [...data];
+        this.lastMariosData = data;
         this.lastMariosList$.next(this.lastMariosData);
       });
   }
@@ -109,24 +98,22 @@ export class MariosService {
   fetchMariosSentByEmployee(): void {
     const employeeId = this.sessionService.getUserUUID();
     this.http
-      .get<MariosElement[]>(`${this.baseUrl}/sent/${employeeId}`)
+      .get<MariosList>(`${this.baseUrl}/sent/${employeeId}`)
       .pipe(takeUntil(this.destroy$))
       .subscribe((data) => {
-        this.sentMariosData = [...data];
+        this.sentMariosData = data;
         this.sentMariosList$.next(this.sentMariosData);
-        this.sentMariosListSize = this.sentMariosData.length;
       });
   }
 
   fetchMariosReceivedByEmployee(): void {
     const employeeId = this.sessionService.getUserUUID();
     this.http
-      .get<MariosElement[]>(`${this.baseUrl}/receive/${employeeId}`)
+      .get<MariosList>(`${this.baseUrl}/receive/${employeeId}`)
       .pipe(takeUntil(this.destroy$))
       .subscribe((data) => {
-        this.receivedMariosData = [...data];
+        this.receivedMariosData = data;
         this.receivedMariosList$.next(this.receivedMariosData);
-        this.receivedMariosListSize = this.receivedMariosData.length;
       });
   }
 }

@@ -22,19 +22,19 @@ export class HomePageComponent implements OnInit, OnDestroy {
     this.mariosService.receivedMariosList
       .pipe(takeUntil(this.destroy$))
       .subscribe((receivedMariosData) => {
-        this.recivedCounter = receivedMariosData.length;
+        this.recivedCounter = receivedMariosData.mariosSize;
       });
 
     this.mariosService.sentMariosList
       .pipe(takeUntil(this.destroy$))
       .subscribe((sentMariosData) => {
-        this.sentCounter = sentMariosData.length;
+        this.sentCounter = sentMariosData.mariosSize;
       });
 
     this.mariosService.lastMariosList
       .pipe(takeUntil(this.destroy$))
       .subscribe((lastMariosData) => {
-        this.lastMariosData = lastMariosData;
+        this.lastMariosData = lastMariosData.mariosElementList;
       });
   }
 
