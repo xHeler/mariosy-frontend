@@ -3,7 +3,7 @@
     <div class="col-md-12 mb-2">
       <h4>{{ label | uppercase }}</h4>
     </div>
-    <div class="col-md-4 mb-4" *ngFor="let mariosElement of mariosList.slice(0, 9)">
+    <div class="col-md-4 mb-4" *ngFor="let mariosElement of mariosList">
       <app-marios-card
         [marios]="mariosElement.marios"
         [employee]="mariosElement.sender"
