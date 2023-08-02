@@ -8,7 +8,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgSelectModule } from "@ng-select/ng-select";
+import { NgSelectModule } from '@ng-select/ng-select';
+import { MatChipsModule } from '@angular/material/chips';
 
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { RetryInterceptor } from './core/interceptors/retry.interceptor';
@@ -54,6 +55,7 @@ import { AddMariosFormComponent } from './core/components/add-marios-form/add-ma
   imports: [
     BrowserModule,
     MatDialogModule,
+    MatChipsModule,
     NgbModule,
     HttpClientModule,
     AppRoutingModule,

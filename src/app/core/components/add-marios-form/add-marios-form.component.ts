@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
+import { MariosReaction } from '../../enums/marios-reaction.enum';
 import { Employee } from '../../models/employee.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmployeeService } from '../../services/employee.service';
@@ -13,7 +14,7 @@ export class AddMariosFormComponent implements OnInit {
   employeesData: Employee[] = [];
   employees$ = new ReplaySubject<Employee[]>(1);
   form: FormGroup = new FormGroup({});
-  staticChips: string[] = ['Chip 1', 'Chip 2', 'Chip 3'];
+  enumValues = Object.values(MariosReaction);
 
   constructor(
     private formBuilder: FormBuilder,
@@ -28,13 +29,15 @@ export class AddMariosFormComponent implements OnInit {
 
   private createForm() {
     this.form = this.formBuilder.group({
-      userSearch: [''],
+      receiversId: [''],
+      reaction: '',
       title: ['', Validators.required],
-      comment: [''],
+      message: [''],
     });
   }
 
   onSubmit() {
+    this.form.value.receiversId = this.form.value.receiversId.map((employee: Employee) => employee.id);
     console.log(this.form.value);
     if (this.form.valid) {
       console.log(this.form.value);
@@ -46,7 +49,6 @@ export class AddMariosFormComponent implements OnInit {
       (data) => {
         this.employeesData = [...data];
         this.employees$.next(this.employeesData);
-        console.log(this.employees$);
       },
       (error) => {
         console.error('Error while fetching data:', error);

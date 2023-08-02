@@ -34,14 +34,14 @@ export class MariosService {
 
   get sentMariosList(): Observable<MariosList> {
     if (this.sentMariosData.mariosElementList.length === 0) {
-      this.fetchMariosList();
+      this.fetchMariosSentByEmployee();
     }
     return this.sentMariosList$.asObservable();
   }
 
   get receivedMariosList(): Observable<MariosList> {
     if (this.receivedMariosData.mariosElementList.length === 0) {
-      this.fetchMariosList();
+      this.fetchMariosReceivedByEmployee();
     }
     return this.receivedMariosList$.asObservable();
   }
