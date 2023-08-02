@@ -42,7 +42,7 @@ export class AddMariosFormComponent implements OnInit {
   }
 
   onSearchChange(event: { term: string; items: any[] }) {
-    this.employeeService.searchEmployees(event.term).subscribe(
+    this.employeeService.searchEmployees(event.term, true).subscribe(
       (data) => {
         this.employeesData = [...data];
         this.employees$.next(this.employeesData);
