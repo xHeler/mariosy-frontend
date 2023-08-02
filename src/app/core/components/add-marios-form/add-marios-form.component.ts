@@ -4,6 +4,8 @@ import { MariosReaction } from '../../enums/marios-reaction.enum';
 import { Employee } from '../../models/employee.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmployeeService } from '../../services/employee.service';
+import { MariosService } from '../../services/marios.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-marios-form',
@@ -18,7 +20,9 @@ export class AddMariosFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private employeeService: EmployeeService
+    private employeeService: EmployeeService,
+    private mariosService: MariosService,
+    private router: Router
   ) {}
 
   selected: Employee[] = [];
@@ -40,9 +44,17 @@ export class AddMariosFormComponent implements OnInit {
     this.form.value.receiversId = this.form.value.receiversId.map(
       (employee: Employee) => employee.id
     );
-    console.log(this.form.value);
     if (this.form.valid) {
       console.log(this.form.value);
+      this.mariosService.addMarios(this.form.value).subscribe(
+        (response) => {
+          console.log('Marios added successfully:', response);
+          this.router.navigate(['/home']);
+        },
+        (error) => {
+          console.error('Error while adding Marios:', error);
+        }
+      );
     }
   }
 
@@ -56,5 +68,9 @@ export class AddMariosFormComponent implements OnInit {
         console.error('Error while fetching data:', error);
       }
     );
+  }
+
+  getChipOptionClass(value: string): string {
+    return 'mdc-evolution-chip__text-label ' + value.toLowerCase() + '-background';
   }
 }

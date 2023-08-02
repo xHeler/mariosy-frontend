@@ -68,13 +68,15 @@ export class MariosService {
       .pipe(takeUntil(this.destroy$));
   }
 
-  addMarios(payload: Marios): void {
-    this.http
+  addMarios(payload: Marios): Observable<any> {
+    const employeeId = this.sessionService.getUserUUID();
+    if (employeeId !== null) {
+      payload.senderId = employeeId;
+    }
+
+    return this.http
       .post<Marios>(this.baseUrl, payload)
-      .pipe(takeUntil(this.destroy$))
-      .subscribe(() => {
-        this.fetchDataFromServer();
-      });
+      .pipe(takeUntil(this.destroy$));
   }
 
   updateMarios(marios: Marios): void {

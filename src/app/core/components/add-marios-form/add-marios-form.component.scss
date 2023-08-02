@@ -93,6 +93,7 @@ textarea {
 .chip-list {
   display: flex;
   flex-wrap: wrap;
+  margin-top: 1rem;
 }
 
 .chip {
@@ -118,4 +119,32 @@ textarea {
 ::ng-deep .button-padding button {
   padding: 0.4rem 1.6rem !important;
   letter-spacing: 0.1rem;
+}
+
+::ng-deep .mdc-evolution-chip-set .mdc-evolution-chip {
+  padding-left: 0.6rem;
+  background-color: $color-text-light !important;
+  border: 0.1rem solid $color-text-gray-light;
+  border-radius: 0.3rem;
+}
+
+::ng-deep
+  .mat-mdc-standard-chip:not(.mdc-evolution-chip--disabled)
+  .mdc-evolution-chip__text-label {
+  font-family: $font-family;
+  font-weight: 700;
+}
+
+::ng-deep .mdc-evolution-chip__cell {
+  background-repeat: no-repeat;
+  background-size: 1rem 1rem;
+  background-position: left center;
+}
+
+.thank_you-background {
+  background-image: url("/assets/images/stars/THANK_YOU.svg");
+  background-repeat: no-repeat;
+  background-size: 1rem 1rem;
+  background-position: left center;
+  padding-left: 0.6rem;
 }
