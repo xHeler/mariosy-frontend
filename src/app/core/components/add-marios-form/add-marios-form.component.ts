@@ -17,6 +17,7 @@ export class AddMariosFormComponent implements OnInit {
   employees$ = new ReplaySubject<Employee[]>(1);
   form: FormGroup = new FormGroup({});
   enumValues = Object.values(MariosReaction);
+  characterCount = 0;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -37,6 +38,10 @@ export class AddMariosFormComponent implements OnInit {
       reaction: '',
       title: ['', Validators.required],
       message: [''],
+    });
+
+    this.form.get('message')?.valueChanges.subscribe((value: string) => {
+      this.characterCount = value.length;
     });
   }
 
@@ -88,4 +93,9 @@ export class AddMariosFormComponent implements OnInit {
         return '';
     }
   }
+
+  getCharacterCount(): number {
+    return this.characterCount;
+  }
+
 }
