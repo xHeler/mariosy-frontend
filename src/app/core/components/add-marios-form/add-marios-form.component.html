@@ -37,8 +37,20 @@
   <div class="form-group form-group-bottom-border">
     <span class="label">Select Category:</span>
     <div class="chip-list">
-      <mat-chip-listbox aria-label="Fish selection" formControlName="reaction">
-        <mat-chip-option *ngFor="let value of enumValues" [value]="value" [ngClass]="getChipOptionClass(value)">
+      <mat-chip-listbox
+        aria-label="Reaction selection"
+        formControlName="reaction"
+      >
+        <mat-chip-option *ngFor="let value of enumValues" [value]="value">
+          <span
+            class="mat-mdc-chip-graphic"
+            [ngStyle]="{
+              'background-image': 'url(' + getBackgroundImage(value) + ')',
+              'background-repeat': 'no-repeat',
+              'background-size': '1rem 1rem',
+              'background-position': 'left center'
+            }"
+          ></span>
           {{ value | reactionMessage }}
         </mat-chip-option>
       </mat-chip-listbox>

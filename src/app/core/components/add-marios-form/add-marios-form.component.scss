@@ -135,23 +135,26 @@ textarea {
   font-weight: 700;
 }
 
-::ng-deep .mdc-evolution-chip__cell {
-  background-repeat: no-repeat;
-  background-size: 1rem 1rem;
-  background-position: left center;
+::ng-deep .mat-mdc-chip-action-label {
+//
 }
 
-.thank_you-background {
-  background-image: url("/assets/images/stars/THANK_YOU.svg");
+::ng-deep
+  .mat-mdc-standard-chip.mdc-evolution-chip--with-primary-graphic
+  .mdc-evolution-chip__graphic {
+  padding: 0 !important;
+}
+
+::ng-deep .mat-mdc-chip-graphic {
   background-repeat: no-repeat;
   background-size: 1rem 1rem;
-  background-position: left center;
-  padding-left: 0.6rem;
+  margin-top: 1rem;
+  padding-left: 1.5rem;
 }
 
 textarea::placeholder {
   font-weight: 700;
   font-size: 0.7rem;
-  color: #BABABA;
+  color: #bababa;
   padding-left: 0.3rem;
 }

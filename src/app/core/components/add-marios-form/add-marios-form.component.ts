@@ -70,7 +70,22 @@ export class AddMariosFormComponent implements OnInit {
     );
   }
 
-  getChipOptionClass(value: string): string {
-    return 'mdc-evolution-chip__text-label ' + value.toLowerCase() + '-background';
+  getBackgroundImage(value: MariosReaction): string {
+    switch (value) {
+      case MariosReaction.THANK_YOU:
+        return '/assets/images/stars/THANK_YOU.svg';
+      case MariosReaction.GOOD_JOB:
+        return '/assets/images/stars/GOOD_JOB.svg';
+      case MariosReaction.IMPRESSIVE:
+        return '/assets/images/stars/IMPRESSIVE.svg';
+      case MariosReaction.EXCEPTIONAL:
+        return '/assets/images/stars/EXCEPTIONAL.svg';
+      case MariosReaction.AWESOME:
+        return '/assets/images/stars/AWESOME.svg';
+      case MariosReaction.OUTSTANDING:
+        return '/assets/images/stars/OUTSTANDING.svg';
+      default:
+        return '';
+    }
   }
 }
