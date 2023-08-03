@@ -25,6 +25,10 @@ textarea {
   border: 1px solid $color-text-gray-light;
   border-radius: $border-radius;
   resize: none;
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+  padding: 0.3rem;
 }
 
 .title-text-area {
@@ -106,12 +110,6 @@ textarea {
   cursor: pointer;
 }
 
-textarea {
-  width: 100%;
-  height: 100px;
-  padding: 5px;
-}
-
 .button-conatiner {
   padding: 0rem 2rem 0.75rem 1rem;
 }
@@ -177,6 +175,12 @@ textarea::placeholder {
 
 .textarea-container {
   position: relative;
+
+  textarea {
+    padding: 0.5rem !important;
+    line-height: 1.3rem;
+    font-size: 1.2rem;
+  }
 }
 
 .textarea-container .char-count {
