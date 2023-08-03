@@ -148,3 +148,10 @@ textarea {
   background-position: left center;
   padding-left: 0.6rem;
 }
+
+textarea::placeholder {
+  font-weight: 700;
+  font-size: 0.7rem;
+  color: #BABABA;
+  padding-left: 0.3rem;
+}
