@@ -72,10 +72,15 @@
 
   <div class="form-group">
     <span class="label" for="commentInput">Comment:</span>
-    <textarea id="commentInput" formControlName="message"
-    [attr.maxLength]="255"
-    [readonly]="getCharacterCount() > 255"></textarea>
-    <div class="char-count">{{ getCharacterCount() }} / 255</div>
+    <div class="textarea-container">
+      <textarea
+        id="commentInput"
+        formControlName="message"
+        [attr.maxLength]="255"
+        [readonly]="getCharacterCount() > 255"
+      ></textarea>
+      <div class="char-count">{{ getCharacterCount() }}/255</div>
+    </div>
   </div>
   <div class="button-conatiner d-flex justify-content-end">
     <app-button

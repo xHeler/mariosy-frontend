@@ -174,3 +174,16 @@ textarea::placeholder {
 ::ng-deep .mat-mdc-standard-chip {
   --mdc-chip-elevated-container-color: white !important;
 }
+
+.textarea-container {
+  position: relative;
+}
+
+.textarea-container .char-count {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  color: $color-text-gray-light;
+  letter-spacing: 0.05rem;
+  font-weight: 600;
+}
