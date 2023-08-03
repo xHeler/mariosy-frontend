@@ -123,7 +123,7 @@ textarea {
 
 ::ng-deep .mdc-evolution-chip-set .mdc-evolution-chip {
   padding-left: 0.6rem;
-  background-color: $color-text-light !important;
+  //background-color: $color-text-light !important;
   border: 0.1rem solid $color-text-gray-light;
   border-radius: 0.3rem;
 }
@@ -133,6 +133,7 @@ textarea {
   .mdc-evolution-chip__text-label {
   font-family: $font-family;
   font-weight: 700;
+  color: $color-text-dark !important;
 }
 
 ::ng-deep
@@ -144,8 +145,11 @@ textarea {
 ::ng-deep .mat-mdc-chip-graphic {
   background-repeat: no-repeat;
   background-size: 1rem 1rem;
-  margin-top: 1rem;
   padding-left: 1.5rem;
+}
+
+::ng-deep .mat-ripple .mat-mdc-chip-ripple {
+  background-color: $color-accent !important;
 }
 
 textarea::placeholder {
@@ -157,4 +161,16 @@ textarea::placeholder {
 
 .no-padding-btm {
   padding-bottom: 0 !important;
+}
+
+::ng-deep .assigned-chip {
+  background-color: $color-accent !important;
+}
+
+::ng-deep .mat-mdc-standard-chip.mat-mdc-chip-selected.mat-primary {
+  --mdc-chip-elevated-container-color: #fccf00 !important;
+}
+
+::ng-deep .mat-mdc-standard-chip {
+  --mdc-chip-elevated-container-color: white !important;
 }
