@@ -30,6 +30,9 @@ export class AddMariosFormComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.createForm();
+    this.form
+      .get('receiversId')
+      ?.valueChanges.subscribe((value) => (this.selected = value));
   }
 
   private createForm() {
@@ -50,10 +53,8 @@ export class AddMariosFormComponent implements OnInit, OnDestroy {
       (employee: Employee) => employee.id
     );
     if (this.form.valid) {
-      console.log(this.form.value);
       this.mariosService.addMarios(this.form.value).subscribe(
-        (response) => {
-          console.log('Marios added successfully:', response);
+        () => {
           this.router.navigate(['/home']);
         },
         (error) => {
@@ -66,10 +67,15 @@ export class AddMariosFormComponent implements OnInit, OnDestroy {
   onSearchChange(event: { term: string; items: any[] }) {
     this.employeeService.searchEmployees(event.term, true).subscribe(
       (data: Employee[]) => {
-        const employees: EmployeeWithFullName[] = data.map(employee => ({
+        let employees: EmployeeWithFullName[] = data.map((employee) => ({
           ...employee,
-          fullName: `${employee.firstName} ${employee.lastName}`
+          fullName: `${employee.firstName} ${employee.lastName}`,
         }));
+
+        employees = employees.filter(
+          (employee) => !this.existsInSelected(employee)
+        );
+
         this.employees$.next(employees);
       },
       (error) => {
@@ -99,6 +105,10 @@ export class AddMariosFormComponent implements OnInit, OnDestroy {
 
   getCharacterCount(): number {
     return this.characterCount;
+  }
+
+  private existsInSelected(employee: EmployeeWithFullName): boolean {
+    return this.selected.some((e) => e.id === employee.id);
   }
 
   ngOnDestroy() {
