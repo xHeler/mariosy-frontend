@@ -39,8 +39,22 @@ export class AddMariosFormComponent implements OnInit, OnDestroy {
     this.form = this.formBuilder.group({
       receiversId: [''],
       reaction: '',
-      title: ['', Validators.required],
-      message: [''],
+      title: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(1),
+          Validators.maxLength(128),
+        ],
+      ],
+      message: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(1),
+          Validators.maxLength(255),
+        ],
+      ],
     });
 
     this.form.get('message')?.valueChanges.subscribe((value: string) => {
@@ -61,6 +75,10 @@ export class AddMariosFormComponent implements OnInit, OnDestroy {
           console.error('Error while adding Marios:', error);
         }
       );
+    } else {
+      Object.keys(this.form.controls).forEach((key) => {
+        this.form.get(key)?.markAsTouched();
+      });
     }
   }
 
