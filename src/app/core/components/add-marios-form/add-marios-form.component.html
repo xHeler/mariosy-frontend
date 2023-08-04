@@ -1,131 +1,26 @@
 <div class="form-container" [formGroup]="form">
   <div class="form-group form-group-bottom-border no-padding-btm">
-    <ng-select
-      class="search-field-multiselect employee-avatar custom-ng-select"
-      [items]="employees$ | async"
-      bindLabel="fullName"
-      [class.error-border]="
-        form.get('receiversId')?.invalid && form.get('receiversId')?.touched
-      "
-      placeholder="Who you want to recognize?"
-      appendTo="body"
-      [multiple]="true"
-      [(ngModel)]="selected"
-      [clearable]="false"
-      formControlName="receiversId"
-      (search)="onSearchChange($event)"
-      [searchFn]="false"
-      [required]="true"
-    >
-      <ng-template ng-label-tmp let-item="item" let-clear="clear">
-        <span>{{ item.firstName + " " + item.lastName }}</span>
-        <span
-          class="ng-value-icon left"
-          (click)="clear(item)"
-          aria-hidden="true"
-          >×</span
-        >
-      </ng-template>
-      <ng-template
-        ng-option-tmp
-        let-item="item"
-        let-search="searchTerm"
-        let-index="index"
-      >
-        <span>{{
-          item.firstName + " " + item.lastName + " - " + item.email
-        }}</span>
-      </ng-template>
-    </ng-select>
-    <div
-      *ngIf="
-        form.get('receiversId')?.invalid && form.get('receiversId')?.touched
-      "
-      class="error-message"
-    >
-      Receivers are required.
-    </div>
+    <app-employee-select
+      [control]="form.get('receiversId')"
+    ></app-employee-select>
   </div>
 
   <div class="form-group form-group-bottom-border">
-    <span class="label">Select Category:</span>
-    <div class="chip-list">
-      <mat-chip-listbox
-        aria-label="Reaction selection"
-        formControlName="reaction"
-        [required]="true"
-      >
-        <mat-chip-option
-          *ngFor="let value of enumValues"
-          [value]="value"
-          [class.error-border]="
-            form.get('reaction')?.invalid && form.get('reaction')?.touched
-          "
-        >
-          <span
-            class="mat-mdc-chip-graphic"
-            [ngStyle]="{
-              'background-image': 'url(' + getBackgroundImage(value) + ')',
-              'background-repeat': 'no-repeat',
-              'background-size': '1rem 1rem',
-              'background-position': 'left center'
-            }"
-          ></span>
-          {{ value | reactionMessage }}
-        </mat-chip-option>
-      </mat-chip-listbox>
-    </div>
-    <div
-      *ngIf="form.get('reaction')?.invalid && form.get('reaction')?.touched"
-      class="error-message"
-    >
-      Reaction is required.
-    </div>
+    <app-reaction-chip-list
+      [control]="form.get('reaction')"
+    ></app-reaction-chip-list>
   </div>
 
   <div class="form-group form-group-bottom-border">
-    <span class="label" for="titleInput">Title:</span>
-    <div class="title-container">
-      <textarea
-        [class.error-border]="
-          form.get('title')?.invalid && form.get('title')?.touched
-        "
-        class="title-text-area"
-        type="text"
-        id="titleInput"
-        formControlName="title"
-        placeholder="Enter marios title"
-      ></textarea>
-    </div>
-    <div
-      *ngIf="form.get('title')?.invalid && form.get('title')?.touched"
-      class="error-message"
-    >
-      Title is required and should be between 1 and 128 characters.
-    </div>
+    <app-title-text-area [control]="form.get('title')"></app-title-text-area>
   </div>
 
   <div class="form-group">
-    <span class="label" for="commentInput">Comment:</span>
-    <div class="textarea-container">
-      <textarea
-        [class.error-border]="
-          form.get('message')?.invalid && form.get('message')?.touched
-        "
-        id="commentInput"
-        formControlName="message"
-        [attr.maxLength]="255"
-        [readonly]="getCharacterCount() > 255"
-      ></textarea>
-      <div class="char-count">{{ getCharacterCount() }}/255</div>
-    </div>
-    <div
-      *ngIf="form.get('message')?.invalid && form.get('message')?.touched"
-      class="error-message"
-    >
-      Message is required and should be between 1 and 255 characters.
-    </div>
+    <app-comment-text-area
+      [control]="form.get('message')"
+    ></app-comment-text-area>
   </div>
+
   <div class="button-conatiner d-flex justify-content-end">
     <app-button
       buttonLabel="SEND"

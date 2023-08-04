@@ -1,0 +1,81 @@
+@import "../../../../../shared/variables/global.scss";
+
+::ng-deep .ng-select .ng-select-container {
+  border: 0 !important;
+}
+
+::ng-deep .ng-arrow-wrapper {
+  visibility: hidden;
+}
+
+::ng-deep .ng-value {
+  padding: 0.2rem !important;
+  border-radius: 0.3rem !important;
+  background-color: $color-accent !important;
+}
+
+::ng-deep .ng-value-icon {
+  border: 0 !important;
+}
+
+::ng-deep .ng-option-marked {
+  background-color: $color-accent !important;
+}
+
+::ng-deep .ng-option {
+  font-family: $font-family !important;
+  font-size: 1rem !important;
+  padding-left: 2rem;
+}
+
+::ng-deep .ng-placeholder {
+  margin-top: 0.1rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+::ng-deep .assigned-chip {
+  background-color: $color-accent !important;
+}
+
+::ng-deep .mat-mdc-standard-chip.mat-mdc-chip-selected.mat-primary {
+  --mdc-chip-elevated-container-color: #fccf00 !important;
+}
+
+::ng-deep .mat-mdc-standard-chip {
+  --mdc-chip-elevated-container-color: white !important;
+}
+
+::ng-deep .mdc-evolution-chip__checkmark {
+  color: $color-text-dark !important;
+}
+
+::ng-deep .mdc-evolution-chip-set .mdc-evolution-chip {
+  padding-left: 0.6rem;
+  border: 0.1rem solid $color-text-gray-light;
+  border-radius: 0.3rem;
+}
+
+::ng-deep
+  .mat-mdc-standard-chip:not(.mdc-evolution-chip--disabled)
+  .mdc-evolution-chip__text-label {
+  font-family: $font-family;
+  font-weight: 700;
+  color: $color-text-dark !important;
+}
+
+::ng-deep
+  .mat-mdc-standard-chip.mdc-evolution-chip--with-primary-graphic
+  .mdc-evolution-chip__graphic {
+  padding: 0 !important;
+}
+
+::ng-deep .mat-mdc-chip-graphic {
+  background-repeat: no-repeat;
+  background-size: 1rem 1rem;
+  padding-left: 1.5rem;
+}
+
+::ng-deep .mat-ripple .mat-mdc-chip-ripple {
+  background-color: $color-accent !important;
+}

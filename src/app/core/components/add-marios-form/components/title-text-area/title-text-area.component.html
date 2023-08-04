@@ -1,0 +1,14 @@
+<span class="label" for="titleInput">Title:</span>
+<div class="title-container">
+  <textarea
+    [class.error-border]="control.invalid && control.touched"
+    class="title-text-area"
+    type="text"
+    id="titleInput"
+    [formControl]="control"
+    placeholder="Enter marios title"
+  ></textarea>
+</div>
+<div *ngIf="control.invalid && control.touched" class="error-message">
+  Title is required and should be between 1 and 128 characters.
+</div>

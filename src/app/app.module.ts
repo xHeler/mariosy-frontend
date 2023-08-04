@@ -33,6 +33,10 @@ import { MariosDialogComponent } from './core/components/marios-dialog/marios-di
 import { ReactionMessagePipe } from './shared/pipes/reaction-message.pipe';
 import { AddMariosFormComponent } from './core/components/add-marios-form/add-marios-form.component';
 import { ErrorDialogComponent } from './shared/components/error-dialog/error-dialog.component';
+import { EmployeeSelectComponent } from './core/components/add-marios-form/components/employee-select/employee-select.component';
+import { ReactionChipListComponent } from './core/components/add-marios-form/components/reaction-chip-list/reaction-chip-list.component';
+import { TitleTextAreaComponent } from './core/components/add-marios-form/components/title-text-area/title-text-area.component';
+import { CommentTextAreaComponent } from './core/components/add-marios-form/components/comment-text-area/comment-text-area.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +58,10 @@ import { ErrorDialogComponent } from './shared/components/error-dialog/error-dia
     ReactionMessagePipe,
     AddMariosFormComponent,
     ErrorDialogComponent,
+    EmployeeSelectComponent,
+    ReactionChipListComponent,
+    TitleTextAreaComponent,
+    CommentTextAreaComponent,
   ],
   imports: [
     BrowserModule,

@@ -82,53 +82,6 @@ export class AddMariosFormComponent implements OnInit, OnDestroy {
     }
   }
 
-  onSearchChange(event: { term: string; items: any[] }) {
-    this.employeeService.searchEmployees(event.term, true).subscribe(
-      (data: Employee[]) => {
-        let employees: EmployeeWithFullName[] = data.map((employee) => ({
-          ...employee,
-          fullName: `${employee.firstName} ${employee.lastName}`,
-        }));
-
-        employees = employees.filter(
-          (employee) => !this.existsInSelected(employee)
-        );
-
-        this.employees$.next(employees);
-      },
-      (error) => {
-        console.error('Error while fetching data:', error);
-      }
-    );
-  }
-
-  getBackgroundImage(value: MariosReaction): string {
-    switch (value) {
-      case MariosReaction.THANK_YOU:
-        return '/assets/images/stars/THANK_YOU.svg';
-      case MariosReaction.GOOD_JOB:
-        return '/assets/images/stars/GOOD_JOB.svg';
-      case MariosReaction.IMPRESSIVE:
-        return '/assets/images/stars/IMPRESSIVE.svg';
-      case MariosReaction.EXCEPTIONAL:
-        return '/assets/images/stars/EXCEPTIONAL.svg';
-      case MariosReaction.AWESOME:
-        return '/assets/images/stars/AWESOME.svg';
-      case MariosReaction.OUTSTANDING:
-        return '/assets/images/stars/OUTSTANDING.svg';
-      default:
-        return '';
-    }
-  }
-
-  getCharacterCount(): number {
-    return this.characterCount;
-  }
-
-  private existsInSelected(employee: EmployeeWithFullName): boolean {
-    return this.selected.some((e) => e.id === employee.id);
-  }
-
   ngOnDestroy() {
     this.employees$.complete();
   }
