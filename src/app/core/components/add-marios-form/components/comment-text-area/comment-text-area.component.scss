@@ -1,5 +1,7 @@
 @import "../../../../../shared/variables/global.scss";
 
+$color-text-gray: #bababa;
+
 .textarea-container {
   position: relative;
 
@@ -16,13 +18,13 @@
   right: 0.5rem;
   color: $color-text-gray-light;
   letter-spacing: 0.05rem;
-  font-weight: 600;
+  font-weight: $font-weight-bold-light - 100;
 }
 
 textarea::placeholder {
-  font-weight: 700;
+  font-weight: $font-weight-bold-light;
   font-size: 0.7rem;
-  color: #bababa;
+  color: $color-text-gray;
   padding-left: 0.3rem;
 }
 
@@ -32,7 +34,7 @@ textarea::placeholder {
   right: 0.5rem;
   color: $color-text-gray-light;
   letter-spacing: 0.05rem;
-  font-weight: 600;
+  font-weight: $font-weight-bold-light - 100;
 }
 
 textarea {
