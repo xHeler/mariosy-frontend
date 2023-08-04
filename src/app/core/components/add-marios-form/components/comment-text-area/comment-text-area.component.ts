@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -6,17 +6,9 @@ import { FormControl } from '@angular/forms';
   templateUrl: './comment-text-area.component.html',
   styleUrls: ['./comment-text-area.component.scss'],
 })
-export class CommentTextAreaComponent implements OnInit {
+export class CommentTextAreaComponent {
   @Input() control: FormControl | any;
+  maxCharacterLimit = 255;
+  title = '';
   characterCount = 0;
-
-  ngOnInit() {
-    this.control.get('message')?.valueChanges.subscribe((value: string) => {
-      this.characterCount = value.length;
-    });
-  }
-
-  getCharacterCount(): number {
-    return this.characterCount;
-  }
 }
