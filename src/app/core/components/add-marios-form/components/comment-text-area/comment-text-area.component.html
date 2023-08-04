@@ -6,7 +6,7 @@
     [formControl]="control"
     [attr.maxLength]="maxMessageLength"
     [(ngModel)]="title"
-    [readonly]="maxMessageLength > 255"
+    [readonly]="title.length > maxMessageLength"
   ></textarea>
   <div class="char-count">{{ title.length }}/{{ maxMessageLength }}</div>
 </div>
