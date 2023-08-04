@@ -7,6 +7,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { MatChipsModule } from '@angular/material/chips';
@@ -31,6 +32,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MariosDialogComponent } from './core/components/marios-dialog/marios-dialog.component';
 import { ReactionMessagePipe } from './shared/pipes/reaction-message.pipe';
 import { AddMariosFormComponent } from './core/components/add-marios-form/add-marios-form.component';
+import { ErrorDialogComponent } from './shared/components/error-dialog/error-dialog.component';
 
 @NgModule({
   declarations: [
@@ -51,12 +53,14 @@ import { AddMariosFormComponent } from './core/components/add-marios-form/add-ma
     MariosDialogComponent,
     ReactionMessagePipe,
     AddMariosFormComponent,
+    ErrorDialogComponent,
   ],
   imports: [
     BrowserModule,
     MatDialogModule,
     MatChipsModule,
     NgbModule,
+    MatIconModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,

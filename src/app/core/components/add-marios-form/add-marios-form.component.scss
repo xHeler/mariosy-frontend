@@ -191,3 +191,7 @@ textarea::placeholder {
   letter-spacing: 0.05rem;
   font-weight: 600;
 }
+
+::ng-deep .mdc-evolution-chip__checkmark {
+  color: $color-text-dark !important;
+}
