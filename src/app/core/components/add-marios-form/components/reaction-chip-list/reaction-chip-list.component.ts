@@ -11,6 +11,12 @@ export class ReactionChipListComponent {
   @Input() control: FormControl | any;
   enumValues = Object.values(MariosReaction);
 
+  getChipGraphicStyle(value: MariosReaction): object {
+    return {
+      'background-image': `url(${this.getBackgroundImage(value)})`,
+    };
+  }
+
   getBackgroundImage(value: MariosReaction): string {
     switch (value) {
       case MariosReaction.THANK_YOU:

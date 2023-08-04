@@ -12,12 +12,7 @@
     >
       <span
         class="mat-mdc-chip-graphic"
-        [ngStyle]="{
-          'background-image': 'url(' + getBackgroundImage(value) + ')',
-          'background-repeat': 'no-repeat',
-          'background-size': '1rem 1rem',
-          'background-position': 'left center'
-        }"
+        [ngStyle]="getChipGraphicStyle(value)"
       ></span>
       {{ value | reactionMessage }}
     </mat-chip-option>
