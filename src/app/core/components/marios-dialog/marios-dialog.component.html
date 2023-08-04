@@ -10,7 +10,8 @@
         <div class="col-md-6">
           <div class="marios-card">
             <span class="marios-card-author">
-              From: {{ data.employee.firstName }} {{ data.employee.lastName }}
+              {{ data.isShowSender ? "From:" : "To:" }}
+              {{ data.employee.firstName }} {{ data.employee.lastName }}
             </span>
           </div>
         </div>

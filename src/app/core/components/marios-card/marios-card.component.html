@@ -13,7 +13,8 @@
         alt="A small light pink icon look like person."
       />
       <span class="marios-card-author">
-        From: {{ employee.firstName }} {{ employee.lastName }}
+        {{ isShowSender ? "From:" : "To:" }}
+        {{ employee.firstName }} {{ employee.lastName }}
       </span>
     </div>
   </div>

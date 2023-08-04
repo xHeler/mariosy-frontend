@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Marios } from '../../models/marios.model';
 import { Employee } from '../../models/employee.model';
@@ -9,8 +9,10 @@ import { Employee } from '../../models/employee.model';
   styleUrls: ['./marios-dialog.component.scss'],
 })
 export class MariosDialogComponent {
+  @Input() isShowSender = true;
+
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: { marios: Marios; employee: Employee },
+    @Inject(MAT_DIALOG_DATA) public data: { marios: Marios; employee: Employee, isShowSender: boolean },
     public dialogRef: MatDialogRef<MariosDialogComponent>
   ) {}
 
