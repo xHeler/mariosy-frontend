@@ -4,8 +4,11 @@ import {
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
+  HttpResponse,
+  HttpErrorResponse
 } from '@angular/common/http';
-import { Observable, retry } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { retryWhen, mergeMap, delay } from 'rxjs/operators';
 
 @Injectable()
 export class RetryInterceptor implements HttpInterceptor {
@@ -13,6 +16,20 @@ export class RetryInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    return next.handle(request).pipe(retry(3));
+
+    return next.handle(request).pipe(
+      retryWhen(errors =>
+        errors.pipe(
+          mergeMap((error: HttpErrorResponse, index: number) => {
+            if (error.status !== 400 && index < 3) {
+              return throwError(error);
+            }
+
+            return throwError(error);
+          }),
+          delay(1000)
+        )
+      )
+    );
   }
 }

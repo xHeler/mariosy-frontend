@@ -38,6 +38,7 @@ export class ErrorInterceptor implements HttpInterceptor {
         };
 
         this.openDialog(errorResponse.details);
+
         return throwError(() => errorResponse);
       })
     );
@@ -49,7 +50,7 @@ export class ErrorInterceptor implements HttpInterceptor {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.data = {
-      message: message
+      message: message,
     };
 
     this.dialog.open(ErrorDialogComponent, dialogConfig);
