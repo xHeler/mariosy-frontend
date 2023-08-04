@@ -1,5 +1,7 @@
 @import "../../../../../shared/variables/global.scss";
 
+$select-field-color: #8d8080;
+
 .employee-avatar {
   background-image: url("/assets/images/person-yellow.svg");
   background-repeat: no-repeat;
@@ -10,7 +12,7 @@
 }
 
 .search-field-multiselect {
-  color: #8d8080;
+  color: $select-field-color;
   font-weight: $font-weight-bold-light;
   font-size: 1.2rem;
 }
