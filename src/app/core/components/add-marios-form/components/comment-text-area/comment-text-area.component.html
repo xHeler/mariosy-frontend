@@ -4,13 +4,13 @@
     [class.error-border]="control.invalid && control.touched"
     id="commentInput"
     [formControl]="control"
-    [attr.maxLength]="maxCharacterLimit"
+    [attr.maxLength]="maxMessageLength"
     [(ngModel)]="title"
-    [readonly]="title.length > 255"
+    [readonly]="maxMessageLength > 255"
   ></textarea>
-  <div class="char-count">{{ title.length }}/{{ maxCharacterLimit }}</div>
+  <div class="char-count">{{ title.length }}/{{ maxMessageLength }}</div>
 </div>
 <div *ngIf="control.invalid && control.touched" class="error-message">
   Message is required and should be between 1 and
-  {{ maxCharacterLimit }} characters.
+  {{ maxMessageLength }} characters.
 </div>

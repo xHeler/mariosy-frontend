@@ -1,9 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ReplaySubject } from 'rxjs';
-import { MariosReaction } from '../../enums/marios-reaction.enum';
-import { Employee, EmployeeWithFullName } from '../../models/employee.model';
+import { Component, Input, OnInit } from '@angular/core';
+import { Employee } from '../../models/employee.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { EmployeeService } from '../../services/employee.service';
 import { MariosService } from '../../services/marios.service';
 import { Router } from '@angular/router';
 
@@ -12,27 +9,19 @@ import { Router } from '@angular/router';
   templateUrl: './add-marios-form.component.html',
   styleUrls: ['./add-marios-form.component.scss'],
 })
-export class AddMariosFormComponent implements OnInit, OnDestroy {
-  employeesData: EmployeeWithFullName[] = [];
-  employees$ = new ReplaySubject<EmployeeWithFullName[]>(1);
+export class AddMariosFormComponent implements OnInit {
+  @Input() public maxTitleLength = 128;
+  @Input() public maxMessageLength = 255;
   form: FormGroup = new FormGroup({});
-  enumValues = Object.values(MariosReaction);
-  characterCount = 0;
 
   constructor(
     private formBuilder: FormBuilder,
-    private employeeService: EmployeeService,
     private mariosService: MariosService,
     private router: Router
   ) {}
 
-  selected: EmployeeWithFullName[] = [];
-
   ngOnInit() {
     this.createForm();
-    this.form
-      .get('receiversId')
-      ?.valueChanges.subscribe((value) => (this.selected = value));
   }
 
   private createForm() {
@@ -44,7 +33,7 @@ export class AddMariosFormComponent implements OnInit, OnDestroy {
         [
           Validators.required,
           Validators.minLength(1),
-          Validators.maxLength(128),
+          Validators.maxLength(this.maxTitleLength),
         ],
       ],
       message: [
@@ -52,13 +41,9 @@ export class AddMariosFormComponent implements OnInit, OnDestroy {
         [
           Validators.required,
           Validators.minLength(1),
-          Validators.maxLength(255),
+          Validators.maxLength(this.maxMessageLength),
         ],
       ],
-    });
-
-    this.form.get('message')?.valueChanges.subscribe((value: string) => {
-      this.characterCount = value.length;
     });
   }
 
@@ -80,9 +65,5 @@ export class AddMariosFormComponent implements OnInit, OnDestroy {
         this.form.get(key)?.markAsTouched();
       });
     }
-  }
-
-  ngOnDestroy() {
-    this.employees$.complete();
   }
 }

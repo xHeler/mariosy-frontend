@@ -8,7 +8,7 @@ import { FormControl } from '@angular/forms';
 })
 export class CommentTextAreaComponent {
   @Input() control: FormControl | any;
-  maxCharacterLimit = 255;
+  @Input() maxMessageLength = 255;
   title = '';
   characterCount = 0;
 }

@@ -7,5 +7,6 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./title-text-area.component.scss'],
 })
 export class TitleTextAreaComponent {
+  @Input() public maxTitleLength = 128;
   @Input() control: FormControl | any;
 }
