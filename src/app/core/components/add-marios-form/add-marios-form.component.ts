@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
 import { MariosReaction } from '../../enums/marios-reaction.enum';
-import { Employee } from '../../models/employee.model';
+import { Employee, EmployeeWithFullName } from '../../models/employee.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmployeeService } from '../../services/employee.service';
 import { MariosService } from '../../services/marios.service';
@@ -12,9 +12,9 @@ import { Router } from '@angular/router';
   templateUrl: './add-marios-form.component.html',
   styleUrls: ['./add-marios-form.component.scss'],
 })
-export class AddMariosFormComponent implements OnInit {
-  employeesData: Employee[] = [];
-  employees$ = new ReplaySubject<Employee[]>(1);
+export class AddMariosFormComponent implements OnInit, OnDestroy {
+  employeesData: EmployeeWithFullName[] = [];
+  employees$ = new ReplaySubject<EmployeeWithFullName[]>(1);
   form: FormGroup = new FormGroup({});
   enumValues = Object.values(MariosReaction);
   characterCount = 0;
@@ -26,7 +26,7 @@ export class AddMariosFormComponent implements OnInit {
     private router: Router
   ) {}
 
-  selected: Employee[] = [];
+  selected: EmployeeWithFullName[] = [];
 
   ngOnInit() {
     this.createForm();
@@ -65,9 +65,12 @@ export class AddMariosFormComponent implements OnInit {
 
   onSearchChange(event: { term: string; items: any[] }) {
     this.employeeService.searchEmployees(event.term, true).subscribe(
-      (data) => {
-        this.employeesData = [...data];
-        this.employees$.next(this.employeesData);
+      (data: Employee[]) => {
+        const employees: EmployeeWithFullName[] = data.map(employee => ({
+          ...employee,
+          fullName: `${employee.firstName} ${employee.lastName}`
+        }));
+        this.employees$.next(employees);
       },
       (error) => {
         console.error('Error while fetching data:', error);
@@ -98,4 +101,7 @@ export class AddMariosFormComponent implements OnInit {
     return this.characterCount;
   }
 
+  ngOnDestroy() {
+    this.employees$.complete();
+  }
 }

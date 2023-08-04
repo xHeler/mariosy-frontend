@@ -3,7 +3,7 @@
     <ng-select
       class="search-field-multiselect employee-avatar custom-ng-select"
       [items]="employees$ | async"
-      bindLabel="firstName"
+      bindLabel="fullName"
       placeholder="Who you want to recognize?"
       appendTo="body"
       [multiple]="true"
@@ -11,6 +11,7 @@
       [clearable]="false"
       formControlName="receiversId"
       (search)="onSearchChange($event)"
+      [searchFn]="false"
     >
       <ng-template ng-label-tmp let-item="item" let-clear="clear">
         <span>{{ item.firstName + " " + item.lastName }}</span>

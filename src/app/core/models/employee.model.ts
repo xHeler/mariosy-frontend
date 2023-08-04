@@ -4,3 +4,7 @@ export interface Employee {
   lastName: string,
   email: string,
 }
+
+export interface EmployeeWithFullName extends Employee {
+  fullName: string;
+}
