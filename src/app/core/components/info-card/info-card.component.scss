@@ -4,13 +4,13 @@
 
 .card {
   cursor: pointer;
-  height: $card-height;
   border-radius: $border-radius;
   background-color: $color-text-light;
   box-shadow: $box-shadow;
   display: flex;
   justify-content: space-between;
   flex-direction: row;
+  min-height: 14rem;
 
   &:hover {
     &::before {

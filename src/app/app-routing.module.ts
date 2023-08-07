@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
 
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { ReceivedMariosComponent } from './pages/received-marios/received-marios.component';
@@ -24,9 +23,7 @@ const routes: Routes = [
   {
     path: 'add-marios',
     component: AddMariosComponent,
-  },
-  { path: 'page-not-found', component: PageNotFoundComponent },
-  { path: '**', redirectTo: 'page-not-found' },
+  }
 ];
 
 @NgModule({

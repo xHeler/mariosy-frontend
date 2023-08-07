@@ -5,12 +5,11 @@
 .marios-container {
   @include flex-left();
   flex-direction: column;
-  width: 19rem;
-  height: 10rem;
   background-color: $color-text-light;
   padding-top: 0.5rem;
   padding-left: 0.5rem;
   border-radius: $border-radius;
+  padding-bottom: 0.5rem;
 }
 
 .marios-card {
@@ -29,6 +28,7 @@
 .marios-card-comment {
   color: $color-gray-light;
   font-size: 0.9rem !important;
+  margin-bottom: 1rem !important;
 }
 
 .marios-card-see-more {
