@@ -11,14 +11,14 @@ export class ReactionChipListComponent {
   @Input() control: FormControl | any;
   mariosReactionsValues = Object.values(MariosReaction);
 
-  getChipGraphicStyle(value: MariosReaction): object {
+  getChipGraphicStyle(mariosReaction: MariosReaction): object {
     return {
-      'background-image': `url(${this.getBackgroundImage(value)})`,
+      'background-image': `url(${this.getBackgroundImage(mariosReaction)})`,
     };
   }
 
-  getBackgroundImage(value: MariosReaction): string {
-    switch (value) {
+  getBackgroundImage(mariosReaction: MariosReaction): string {
+    switch (mariosReaction) {
       case MariosReaction.THANK_YOU:
         return '/assets/images/stars/THANK_YOU.svg';
       case MariosReaction.GOOD_JOB:
