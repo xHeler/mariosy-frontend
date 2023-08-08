@@ -18,7 +18,7 @@ $color-text-gray: #bababa;
   right: 0.5rem;
   color: $color-text-gray-light;
   letter-spacing: 0.05rem;
-  font-weight: $font-weight-bold-light - 100;
+  font-weight: normal;
 }
 
 textarea::placeholder {
@@ -34,7 +34,7 @@ textarea::placeholder {
   right: 0.5rem;
   color: $color-text-gray-light;
   letter-spacing: 0.05rem;
-  font-weight: $font-weight-bold-light - 100;
+  font-weight: normal;
 }
 
 textarea {
