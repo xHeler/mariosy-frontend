@@ -6,15 +6,15 @@
     [required]="true"
   >
     <mat-chip-option
-      *ngFor="let value of enumValues"
-      [value]="value"
+      *ngFor="let reactionValue of MariosReactionValues"
+      [value]="reactionValue"
       [class.error-border]="control.invalid && control.touched"
     >
       <span
         class="mat-mdc-chip-graphic"
-        [ngStyle]="getChipGraphicStyle(value)"
+        [ngStyle]="getChipGraphicStyle(reactionValue)"
       ></span>
-      {{ value | reactionMessage }}
+      {{ reactionValue | reactionMessage }}
     </mat-chip-option>
   </mat-chip-listbox>
 </div>
