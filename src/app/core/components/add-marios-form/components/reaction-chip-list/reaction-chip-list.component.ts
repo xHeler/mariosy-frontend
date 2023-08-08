@@ -9,7 +9,7 @@ import { MariosReaction } from '../../../../enums/marios-reaction.enum';
 })
 export class ReactionChipListComponent {
   @Input() control: FormControl | any;
-  MariosReactionValues = Object.values(MariosReaction);
+  MariosReactionsValues = Object.values(MariosReaction);
 
   getChipGraphicStyle(value: MariosReaction): object {
     return {
