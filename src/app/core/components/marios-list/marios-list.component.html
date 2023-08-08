@@ -6,8 +6,8 @@
     <div class="col-md-4 mb-4" *ngFor="let mariosElement of mariosList">
       <app-marios-card
         [marios]="mariosElement.marios"
-        [employee]="isShowSender ? mariosElement.sender : mariosElement.receiver"
-        [isShowSender]="isShowSender"
+        [employee]="isSender ? mariosElement.sender : mariosElement.receiver"
+        [isSender]="isSender"
       ></app-marios-card>
     </div>
   </div>

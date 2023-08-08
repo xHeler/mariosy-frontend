@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MariosService } from '../../services/marios.service';
 import { Router } from '@angular/router';
@@ -10,34 +10,30 @@ import { Employee } from '../../models/employee.model';
   templateUrl: './add-marios-form.component.html',
   styleUrls: ['./add-marios-form.component.scss'],
 })
-export class AddMariosFormComponent implements OnInit {
+export class AddMariosFormComponent {
   @Input() public maxTitleLength = 128;
   @Input() public maxMessageLength = 255;
 
-  form: FormGroup = new FormGroup({});
+  form: FormGroup = new FormGroup({
+    receiversId: this.createFormControlWithValidation([], []),
+    reaction: this.createFormControlWithValidation('', []),
+    title: this.createFormControlWithValidation('', [
+      Validators.required,
+      Validators.minLength(1),
+      Validators.maxLength(this.maxTitleLength),
+    ]),
+    message: this.createFormControlWithValidation('', [
+      Validators.required,
+      Validators.minLength(1),
+      Validators.maxLength(this.maxMessageLength),
+    ]),
+  });
 
   constructor(
     private formBuilder: FormBuilder,
     private mariosService: MariosService,
     private router: Router
   ) {}
-
-  ngOnInit() {
-    this.form = this.formBuilder.group({
-      receiversId: [''],
-      reaction: '',
-      title: this.createFormControlWithValidation('', [
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(this.maxTitleLength),
-      ]),
-      message: this.createFormControlWithValidation('', [
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(this.maxMessageLength),
-      ]),
-    });
-  }
 
   private createFormControlWithValidation(initialValue: any, validators: any) {
     return this.formBuilder.control(initialValue, validators);
