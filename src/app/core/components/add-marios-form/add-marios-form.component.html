@@ -8,12 +8,14 @@
   <div class="form-group form-group-bottom-border">
     <app-reaction-chip-list
       [control]="form.get('reaction')"
-      maxTitleLength="maxTitleLength"
     ></app-reaction-chip-list>
   </div>
 
   <div class="form-group form-group-bottom-border">
-    <app-title-text-area [control]="form.get('title')"></app-title-text-area>
+    <app-title-text-area
+      [control]="form.get('title')"
+      [maxTitleLength]="maxTitleLength"
+    ></app-title-text-area>
   </div>
 
   <div class="form-group">
