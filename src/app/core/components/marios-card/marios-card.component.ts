@@ -10,7 +10,7 @@ import { MariosDialogComponent } from '../marios-dialog/marios-dialog.component'
   styleUrls: ['./marios-card.component.scss'],
 })
 export class MariosCardComponent {
-  @Input() isShowSender = true;
+  @Input() isSender = true;
   @Input() public marios!: Marios;
   @Input() public employee!: Employee;
   public isHovered = false;
@@ -31,7 +31,7 @@ export class MariosCardComponent {
     dialogConfig.data = {
       marios: this.marios,
       employee: this.employee,
-      isShowSender: false
+      isSender: false
     };
 
     this.dialog.open(MariosDialogComponent, dialogConfig);
