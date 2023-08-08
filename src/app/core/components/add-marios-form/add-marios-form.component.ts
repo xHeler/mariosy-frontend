@@ -23,10 +23,6 @@ export class AddMariosFormComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.createForm();
-  }
-
-  private createForm() {
     this.form = this.formBuilder.group({
       receiversId: [''],
       reaction: '',
@@ -48,7 +44,6 @@ export class AddMariosFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.extractEmployeeIds();
     if (this.form.valid) {
       this.addMarios();
     } else {
@@ -63,6 +58,7 @@ export class AddMariosFormComponent implements OnInit {
   }
 
   private addMarios() {
+    this.extractEmployeeIds();
     this.mariosService.addMarios(this.form.value).subscribe(
       () => {
         this.router.navigate(['/home']);
