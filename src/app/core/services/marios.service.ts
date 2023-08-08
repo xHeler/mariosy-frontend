@@ -70,7 +70,7 @@ export class MariosService {
 
   addMarios(payload: Marios): Observable<any> {
     const employeeId = this.sessionService.getUserUUID();
-    if (employeeId !== null) {
+    if (employeeId) {
       payload.senderId = employeeId;
     }
 
