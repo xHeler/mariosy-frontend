@@ -21,15 +21,24 @@ describe('Navigation', () => {
   it('Switch to add marios page', () => {
     onHomePage.clickAddMariosButton();
     onAddMariosPage.checkSelectSectionExist();
+    onAddMariosPage.clickBackButton();
+    onHomePage.checkListTitles();
+    onHomePage.checkAddMariosButton();
   });
 
   it('Switch to sent marios page', () => {
     onHomePage.clickSentMariosButton();
     onSentMariosPage.checkListTitles();
+    onSentMariosPage.clickBackButton();
+    onHomePage.checkListTitles();
+    onHomePage.checkAddMariosButton();
   });
 
   it('Switch to received marios page', () => {
     onHomePage.clickReceivedMariosButton();
     onReceivedMariosPage.checkListTitles();
+    onReceivedMariosPage.clickBackButton();
+    onHomePage.checkListTitles();
+    onHomePage.checkAddMariosButton();
   });
 });

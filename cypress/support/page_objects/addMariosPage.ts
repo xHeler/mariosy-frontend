@@ -4,6 +4,10 @@ export class AddMariosPage {
       .find('span.label')
       .should('have.text', 'Select Reaction:');
   }
+
+  clickBackButton(): void {
+    cy.contains(' BACK ').click();
+  }
 }
 
 export const onAddMariosPage = new AddMariosPage();
