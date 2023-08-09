@@ -9,10 +9,10 @@ import { Employee } from '../../models/employee.model';
   styleUrls: ['./marios-dialog.component.scss'],
 })
 export class MariosDialogComponent {
-  @Input() isShowSender = true;
+  @Input() isSender = true;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: { marios: Marios; employee: Employee, isShowSender: boolean },
+    @Inject(MAT_DIALOG_DATA) public data: { marios: Marios; employee: Employee, isSender: boolean },
     public dialogRef: MatDialogRef<MariosDialogComponent>
   ) {}
 
