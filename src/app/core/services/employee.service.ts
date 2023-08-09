@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, ReplaySubject, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -33,9 +33,9 @@ export class EmployeeService {
   }
 
   getEmployeeById(employeeId: string): Observable<Employee> {
-    return this.http.get<Employee>(`${this.employeeUrl}/${employeeId}`).pipe(
-      takeUntil(this.destroy$)
-    );
+    return this.http
+      .get<Employee>(`${this.employeeUrl}/${employeeId}`)
+      .pipe(takeUntil(this.destroy$));
   }
 
   addEmployee(payload: Employee): void {
@@ -70,5 +70,19 @@ export class EmployeeService {
         );
         this.employees$.next(this.employeesData);
       });
+  }
+
+  searchEmployees(
+    query: string,
+    excludeLoader: boolean = false
+  ): Observable<Employee[]> {
+    const options = {
+      headers: excludeLoader
+        ? new HttpHeaders({ excludeLoader: 'true' })
+        : undefined,
+    };
+    return this.http
+      .get<Employee[]>(`${this.employeeUrl}/search?q=${query}`, options)
+      .pipe(takeUntil(this.destroy$));
   }
 }

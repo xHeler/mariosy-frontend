@@ -16,11 +16,10 @@ export class ReceivedMariosComponent implements OnInit, OnDestroy {
   constructor(private mariosService: MariosService) {}
 
   ngOnInit() {
-    this.mariosService.fetchDataFromServer();
     this.mariosService.receivedMariosList
       .pipe(takeUntil(this.destroy$))
       .subscribe((receivedMariosData) => {
-        this.receivedMariosData = receivedMariosData;
+        this.receivedMariosData = receivedMariosData.mariosElementList;
       });
   }
 

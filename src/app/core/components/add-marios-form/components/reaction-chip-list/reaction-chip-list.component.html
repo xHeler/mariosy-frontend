@@ -1,0 +1,23 @@
+<span class="label">Select Reaction:</span>
+<div class="chip-list">
+  <mat-chip-listbox
+    aria-label="Reaction selection"
+    [formControl]="control"
+    [required]="true"
+  >
+    <mat-chip-option
+      *ngFor="let reactionValue of mariosReactionsValues"
+      [value]="reactionValue"
+      [class.error-border]="control.invalid && control.touched"
+    >
+      <span
+        class="mat-mdc-chip-graphic"
+        [ngStyle]="getChipGraphicStyle(reactionValue)"
+      ></span>
+      {{ reactionValue | reactionMessage }}
+    </mat-chip-option>
+  </mat-chip-listbox>
+</div>
+<div *ngIf="control.invalid && control.touched" class="error-message">
+  Reaction is required.
+</div>

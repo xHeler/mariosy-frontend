@@ -1,6 +1,11 @@
-import { Marios } from './marios.model';
+import { MariosElement } from './marios-element.model';
 
 export interface MariosList {
-    mariosList: Marios[],
+    mariosElementList: MariosElement[],
     mariosSize: number,
 }
+
+export const EmptyMariosList: MariosList = {
+    mariosElementList: [],
+    mariosSize: 0,
+  };

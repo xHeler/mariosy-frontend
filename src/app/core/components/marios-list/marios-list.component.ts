@@ -8,6 +8,6 @@ import { MariosElement } from '../../models/marios-element.model';
 })
 export class MariosListComponent {
   @Input() public label = '';
-
   @Input() mariosList: MariosElement[] = [];
+  @Input() isSender = true;
 }

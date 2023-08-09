@@ -1,0 +1,16 @@
+<span class="label" for="commentInput">Comment:</span>
+<div class="textarea-container">
+  <textarea
+    [class.error-border]="control.invalid && control.touched"
+    id="commentInput"
+    [formControl]="control"
+    [attr.maxLength]="maxMessageLength"
+    [(ngModel)]="title"
+    [readonly]="title.length > maxMessageLength"
+  ></textarea>
+  <div class="char-count">{{ title.length }}/{{ maxMessageLength }}</div>
+</div>
+<div *ngIf="control.invalid && control.touched" class="error-message">
+  Message is required and should be between 1 and
+  {{ maxMessageLength }} characters.
+</div>

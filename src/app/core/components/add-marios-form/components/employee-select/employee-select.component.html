@@ -1,0 +1,32 @@
+<ng-select
+  class="search-field-multiselect employee-avatar custom-ng-select"
+  [items]="employees$ | async"
+  bindLabel="fullName"
+  [class.error-border]="control.invalid && control.touched"
+  placeholder="Who you want to recognize?"
+  appendTo="body"
+  [multiple]="true"
+  [(ngModel)]="selected"
+  [clearable]="false"
+  [formControl]="control"
+  (search)="onSearchChange($event)"
+  [searchFn]="false"
+  [required]="true"
+>
+  <ng-template ng-label-tmp let-item="item" let-clear="clear">
+    <span>{{ item.firstName + " " + item.lastName }}</span>
+    <span class="ng-value-icon left" (click)="clear(item)" aria-hidden="true">×</span>
+  </ng-template>
+  <ng-template
+    ng-option-tmp
+    let-item="item"
+    let-search="searchTerm"
+    let-index="index"
+  >
+    <span>{{ item.firstName + " " + item.lastName + " - " + item.email }}</span>
+  </ng-template>
+</ng-select>
+
+<div *ngIf="control.invalid && control.touched" class="error-message">
+  Receivers are required.
+</div>

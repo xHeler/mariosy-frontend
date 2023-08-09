@@ -7,6 +7,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { MatChipsModule } from '@angular/material/chips';
 
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { RetryInterceptor } from './core/interceptors/retry.interceptor';
@@ -27,6 +31,12 @@ import { TruncatePipe } from './shared/pipes/truncate.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MariosDialogComponent } from './core/components/marios-dialog/marios-dialog.component';
 import { ReactionMessagePipe } from './shared/pipes/reaction-message.pipe';
+import { AddMariosFormComponent } from './core/components/add-marios-form/add-marios-form.component';
+import { ErrorDialogComponent } from './shared/components/error-dialog/error-dialog.component';
+import { EmployeeSelectComponent } from './core/components/add-marios-form/components/employee-select/employee-select.component';
+import { ReactionChipListComponent } from './core/components/add-marios-form/components/reaction-chip-list/reaction-chip-list.component';
+import { TitleTextAreaComponent } from './core/components/add-marios-form/components/title-text-area/title-text-area.component';
+import { CommentTextAreaComponent } from './core/components/add-marios-form/components/comment-text-area/comment-text-area.component';
 
 @NgModule({
   declarations: [
@@ -46,13 +56,24 @@ import { ReactionMessagePipe } from './shared/pipes/reaction-message.pipe';
     TruncatePipe,
     MariosDialogComponent,
     ReactionMessagePipe,
+    AddMariosFormComponent,
+    ErrorDialogComponent,
+    EmployeeSelectComponent,
+    ReactionChipListComponent,
+    TitleTextAreaComponent,
+    CommentTextAreaComponent,
   ],
   imports: [
     BrowserModule,
     MatDialogModule,
+    MatChipsModule,
     NgbModule,
+    MatIconModule,
     HttpClientModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgSelectModule,
     BrowserAnimationsModule,
   ],
   providers: [

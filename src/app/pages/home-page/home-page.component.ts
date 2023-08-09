@@ -18,23 +18,22 @@ export class HomePageComponent implements OnInit, OnDestroy {
   constructor(private mariosService: MariosService) {}
 
   ngOnInit() {
-    this.mariosService.fetchDataFromServer();
     this.mariosService.receivedMariosList
       .pipe(takeUntil(this.destroy$))
       .subscribe((receivedMariosData) => {
-        this.recivedCounter = receivedMariosData.length;
+        this.recivedCounter = receivedMariosData.mariosSize;
       });
 
     this.mariosService.sentMariosList
       .pipe(takeUntil(this.destroy$))
       .subscribe((sentMariosData) => {
-        this.sentCounter = sentMariosData.length;
+        this.sentCounter = sentMariosData.mariosSize;
       });
 
     this.mariosService.lastMariosList
       .pipe(takeUntil(this.destroy$))
       .subscribe((lastMariosData) => {
-        this.lastMariosData = lastMariosData;
+        this.lastMariosData = lastMariosData.mariosElementList;
       });
   }
 

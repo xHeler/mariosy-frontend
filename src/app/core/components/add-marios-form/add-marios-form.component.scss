@@ -1,0 +1,29 @@
+@import "../../../shared/variables/global.scss";
+
+.form-container {
+  margin: 0 auto;
+  background-color: $color-text-light;
+  border-radius: 0.5rem;
+  font-family: $font-family;
+}
+
+.form-group {
+  padding: 1rem 2rem 0.75rem 1rem;
+}
+
+.form-group-bottom-border {
+  border-bottom: 0.25rem solid $color-accent;
+}
+
+.button-conatiner {
+  padding: 0rem 2rem 0.75rem 1rem;
+}
+
+::ng-deep .button-padding button {
+  padding: 0.4rem 1.6rem !important;
+  letter-spacing: 0.1rem;
+}
+
+.no-padding-btm {
+  padding-bottom: 0 !important;
+}

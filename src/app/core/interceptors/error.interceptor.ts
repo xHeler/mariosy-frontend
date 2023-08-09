@@ -8,6 +8,8 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
@@ -35,8 +37,22 @@ export class ErrorInterceptor implements HttpInterceptor {
           details: errorDetails,
         };
 
+        this.openDialog(errorResponse.details);
+
         return throwError(() => errorResponse);
       })
     );
+  }
+
+  constructor(public dialog: MatDialog) {}
+
+  openDialog(message: string) {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.data = {
+      message: message,
+    };
+
+    this.dialog.open(ErrorDialogComponent, dialogConfig);
   }
 }

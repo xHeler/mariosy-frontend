@@ -1,0 +1,15 @@
+@import "../../../../../shared/variables/global.scss";
+
+textarea {
+  border: 1px solid $color-text-gray-light;
+  border-radius: $border-radius;
+  resize: none;
+  width: 100%;
+  height: 25rem;
+  overflow: hidden;
+  padding: 0.3rem;
+}
+
+.title-text-area {
+  max-height: 2rem;
+}
