@@ -20,16 +20,13 @@ export class EmployeeSelectComponent {
   constructor(private employeeService: EmployeeService) {}
 
   onSearchChange(event: { term: string; items: any[] }) {
-    this.employeeService.searchEmployees(event.term, true).subscribe(
-      (data: Employee[]) => {
+    this.employeeService
+      .searchEmployees(event.term, true)
+      .subscribe((data: Employee[]) => {
         const employees: EmployeeWithFullName[] = this.mapEmployees(data);
         const filteredEmployees = this.filterSelectedEmployees(employees);
         this.employees$.next(filteredEmployees);
-      },
-      (error) => {
-        console.error('Error while fetching data:', error);
-      }
-    );
+      });
   }
 
   private mapEmployees(data: Employee[]): EmployeeWithFullName[] {
@@ -46,6 +43,8 @@ export class EmployeeSelectComponent {
   }
 
   private existsInSelected(employee: EmployeeWithFullName): boolean {
-    return this.selected.some((e) => e.id === employee.id);
+    return this.selected.some(
+      (selectedEmployee) => selectedEmployee.id === employee.id
+    );
   }
 }
