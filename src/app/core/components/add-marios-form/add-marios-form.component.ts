@@ -15,14 +15,14 @@ export class AddMariosFormComponent {
   @Input() public maxMessageLength = 255;
 
   form: FormGroup = new FormGroup({
-    receiversId: this.createFormControlWithValidation([], []),
-    reaction: this.createFormControlWithValidation('', []),
-    title: this.createFormControlWithValidation('', [
+    receiversId: this.formBuilder.control([], []),
+    reaction: this.formBuilder.control('', []),
+    title: this.formBuilder.control('', [
       Validators.required,
       Validators.minLength(1),
       Validators.maxLength(this.maxTitleLength),
     ]),
-    message: this.createFormControlWithValidation('', [
+    message: this.formBuilder.control('', [
       Validators.required,
       Validators.minLength(1),
       Validators.maxLength(this.maxMessageLength),
@@ -34,10 +34,6 @@ export class AddMariosFormComponent {
     private mariosService: MariosService,
     private router: Router
   ) {}
-
-  private createFormControlWithValidation(initialValue: any, validators: any) {
-    return this.formBuilder.control(initialValue, validators);
-  }
 
   onSubmit() {
     if (this.form.valid) {
