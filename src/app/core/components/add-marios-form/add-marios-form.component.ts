@@ -54,9 +54,6 @@ export class AddMariosFormComponent {
     this.mariosService.addMarios(this.form.value).subscribe(
       () => {
         this.router.navigate(['/home']);
-      },
-      (error) => {
-        console.error('Error while adding Marios:', error);
       }
     );
   }
