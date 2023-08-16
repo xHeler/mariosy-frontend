@@ -1,8 +1,9 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { initializeKeycloak } from './init/keycloak-init.factory';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,6 +38,7 @@ import { EmployeeSelectComponent } from './core/components/add-marios-form/compo
 import { ReactionChipListComponent } from './core/components/add-marios-form/components/reaction-chip-list/reaction-chip-list.component';
 import { TitleTextAreaComponent } from './core/components/add-marios-form/components/title-text-area/title-text-area.component';
 import { CommentTextAreaComponent } from './core/components/add-marios-form/components/comment-text-area/comment-text-area.component';
+
 
 @NgModule({
   declarations: [
@@ -75,8 +77,15 @@ import { CommentTextAreaComponent } from './core/components/add-marios-form/comp
     ReactiveFormsModule,
     NgSelectModule,
     BrowserAnimationsModule,
+    KeycloakAngularModule
   ],
   providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeKeycloak,
+      multi: true,
+      deps: [KeycloakService],
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: RetryInterceptor,
