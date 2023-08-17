@@ -1,5 +1,6 @@
 import { KeycloakService } from "keycloak-angular";
-import { SessionService } from './../../core/services/session.service';
+import { SessionService } from '../services/session.service';
+import { environment } from './../../../environments/environment';
 
 export function initializeKeycloak(
   keycloak: KeycloakService,
@@ -8,9 +9,9 @@ export function initializeKeycloak(
   return async () => {
     await keycloak.init({
       config: {
-        url: 'http://localhost:8080',
-        realm: 'deloitte',
-        clientId: 'mariosy-frontend',
+        url: environment.authenticatorUrl,
+        realm: environment.realmName,
+        clientId: environment.clientId,
       },
       initOptions: {
         onLoad: 'check-sso',
@@ -21,7 +22,7 @@ export function initializeKeycloak(
         const { method, url } = request;
     
         const isGetRequest = 'GET' === method.toUpperCase();
-        const acceptablePaths = ['/assets', '/clients/public'];
+        const acceptablePaths = ['/assets'];
         const isAcceptablePathMatch = acceptablePaths.some((path) =>
           url.includes(path)
         );
