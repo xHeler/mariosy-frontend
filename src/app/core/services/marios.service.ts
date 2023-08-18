@@ -11,7 +11,7 @@ import { environment } from 'src/environment/environment';
   providedIn: 'root',
 })
 export class MariosService {
-  private baseUrl = '/api/marios';
+  private baseUrl = environment.backend.baseURL + '/api/marios';
   private lastMariosData: MariosList = EmptyMariosList;
   private sentMariosData: MariosList = EmptyMariosList;
   private receivedMariosData: MariosList = EmptyMariosList;
