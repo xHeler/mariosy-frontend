@@ -4,11 +4,11 @@
 
 $card-height-default: $card-height;
 $card-height-large: 11rem;
-$card-height-medium: 9rem;
+$card-height-medium: 9.5rem;
 $card-height-small: 7rem;
 $logo-img-default: $mario-logo-width $mario-logo-height;
 $logo-img-large: 9rem 9rem;
-$logo-img-medium: 7rem 7rem;
+$logo-img-medium: 8rem 8rem;
 $logo-img-small: 5rem 5rem;
 
 .card {
@@ -123,9 +123,9 @@ $logo-img-small: 5rem 5rem;
 
       > span {
         line-height: 1.75rem !important;
-        font-size: 1.2rem;
-        letter-spacing: 0.12rem;
-        padding-left: 1rem !important;
+        font-size: 1.4rem;
+        letter-spacing: 0.15rem;
+        padding-left: 1.5rem !important;
       }
     }
 
@@ -136,9 +136,9 @@ $logo-img-small: 5rem 5rem;
       }
 
       > span {
-        font-size: 5rem;
-        margin-top: 3rem;
-        padding-left: 0.7rem;
+        font-size: 5.5rem;
+        margin-top: 3.25rem;
+        padding-left: 1rem;
       }
     }
   }
@@ -164,7 +164,7 @@ $logo-img-small: 5rem 5rem;
       }
 
       > span {
-        font-size: 3.5rem;
+        font-size: 3rem;
         margin-top: 1.75rem;
         padding-left: 1rem;
       }
