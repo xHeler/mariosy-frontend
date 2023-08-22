@@ -9,7 +9,7 @@ import { environment } from 'src/environment/environment';
   providedIn: 'root',
 })
 export class EmployeeService {
-  private employeeUrl = environment.backend.baseURL + '/api/marios';
+  private employeeUrl = environment.backend.baseURL + '/api/employee';
   private employeesData: Employee[] = [];
   private employees$ = new ReplaySubject<Employee[]>(1);
   private destroy$ = new Subject<void>();
