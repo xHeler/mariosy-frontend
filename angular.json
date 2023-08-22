@@ -70,7 +70,7 @@
           "configurations": {
             "production": {
               "browserTarget": "mariosy-frontend:build:production",
-              "proxyConfig": "src/proxy.conf.json"
+              "proxyConfig": "src/proxy-prod.conf.json"
             },
             "development": {
               "browserTarget": "mariosy-frontend:build:development",
