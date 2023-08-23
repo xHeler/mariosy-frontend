@@ -21,7 +21,7 @@
 
   <div class="col-md-12">
     <div class="marios-card">
-      <img src="assets/images/star.svg" alt="A green star icon." />
+      <img [src]="getBackgroundImage(marios.reaction)" alt="A color star icon." />
       <span>{{ marios.reaction | reactionMessage }}</span>
     </div>
   </div>
