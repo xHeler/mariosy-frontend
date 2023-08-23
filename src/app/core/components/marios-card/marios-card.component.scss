@@ -5,7 +5,7 @@
 .marios-container {
   @include flex-left();
   flex-direction: column;
-  min-width: 17rem;
+  min-width: 15rem;
   min-height: 9rem;
   background-color: $color-text-light;
   padding-top: 0.5rem;
