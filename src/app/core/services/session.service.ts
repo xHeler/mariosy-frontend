@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class SessionService {
-  private userUUID = "95f1b246-81ff-43a6-92c6-98a208abe331";
+  private userUUID = "adf0f389-d526-45a8-8200-4734ba5fd72d";
 
   setUserUUID(uuid: string): void {
     this.userUUID = uuid;

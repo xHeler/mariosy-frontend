@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
   backend: {
-    baseURL: 'http://localhost:8080',
+    baseURL: 'http://18.195.101.46:8080',
   },
 };
