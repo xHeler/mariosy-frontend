@@ -42,3 +42,6 @@ testem.log
 Thumbs.db
 
 .vscode/
+
+# proxy
+src/proxy-prod.conf.json

@@ -43,8 +43,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "4mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -69,7 +69,8 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "mariosy-frontend:build:production"
+              "browserTarget": "mariosy-frontend:build:production",
+              "proxyConfig": "src/proxy-prod.conf.json"
             },
             "development": {
               "browserTarget": "mariosy-frontend:build:development",
